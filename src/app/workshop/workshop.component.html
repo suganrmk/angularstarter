@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Serial No.</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let truckdata of trucklistdata">
+        <td> {{truckdata.name}}</td>
+        <td> {{truckdata.serialNumber}}</td>
+        <td *ngIf = "truckdata.action =='CREATE'" class="Cbutton"> <button>Create Workshop order</button></td>
+        <td *ngIf = "truckdata.action =='OPEN'" class="Obutton"> <button>Open Workshop Order</button></td>
+     </tr>
+    </tbody>
+ 
+</table>
