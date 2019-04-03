@@ -12,8 +12,8 @@
         <td> {{truckdata.serialNumber}}</td>
         <td  class="Cbutton">
           
-          <button *ngIf = "truckdata.action =='CREATE'">Create Workshop order</button>
-          <button *ngIf = "truckdata.action =='OPEN'">Open Workshop Order</button>
+          <button *ngIf = "truckdata.isWorkOrderOpen =='true'">Open Workshop Order</button>
+          <button *ngIf = "truckdata.isWorkOrderOpen =='false'">Create Workshop order</button>
           <button>Create Service Report</button>
         </td>  
       </tr>
