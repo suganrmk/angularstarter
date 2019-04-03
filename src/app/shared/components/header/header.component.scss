@@ -1,5 +1,38 @@
 header {
     background: #535353;
-    padding: 15px 10px;
+    padding: 0px;
     color: #fff;
+    float: left;
+    width:100%;
+}
+
+.backheaderbtn{
+    background: #ff6700;
+    background-image: url('../../../../assets/images/headerstrip1.png');
+    width: 91px;
+    display: inline-block; 
+    height: 48px;
+    background-repeat: no-repeat;
+    background-position: 20px 0px;
+    float: left;
+}
+
+.pagetitle {
+    float: left;
+    background: #3e3e3e;
+    padding: 15px 30px 15px 0px;
+    width: 200px;
+    background-image: url('../../../../assets/images/headerstrip2.png');
+    background-repeat: no-repeat; 
+    background-position: 170px 0;
+}
+
+ul.breadcrum {
+    float: left;
+    li{
+        float: left;
+        font-size: 14px;
+        margin: 16px 11px 0 7px;
+    
+    }
 }

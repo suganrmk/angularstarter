@@ -12,16 +12,16 @@
     position: fixed;
     top: 48px;
     left: 0;
+    border-right: 1px solid #ccc;
 }
 
 .maincontent{
     float: left;
     width: calc( 100% - 60px);
     position: fixed;
-    height: 100%;
+    height: calc( 100% - 80px);
     overflow: scroll;
-    top: 48px;
-
+    top: 48px; 
 }
 
 workshop-header {
@@ -29,4 +29,14 @@ workshop-header {
     top: 0;
     left: 0;
     right: 0;
+}
+workshop-footer {
+    position: fixed;
+    bottom: 0;
+    left: 60px;
+    height: 50px;
+    right: 0;
+    background: #f2f2f2;
+    border-top: 1px solid #ccc;
+    padding: 0 10px;
 }
