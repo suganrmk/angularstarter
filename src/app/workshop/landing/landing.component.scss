@@ -1,0 +1,32 @@
+.maincontainer{
+    float: right;
+    width: calc( 100% - 60px);
+    margin: 49px 0 0 0;
+}
+
+.sidebar{
+    float: left;
+    width: 60px;
+    background: #ececec;
+    height: 100%;
+    position: fixed;
+    top: 48px;
+    left: 0;
+}
+
+.maincontent{
+    float: left;
+    width: calc( 100% - 60px);
+    position: fixed;
+    height: 100%;
+    overflow: scroll;
+    top: 48px;
+
+}
+
+workshop-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
