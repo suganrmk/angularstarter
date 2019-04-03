@@ -10,9 +10,13 @@
       <tr *ngFor="let truckdata of trucklistdata">
         <td> {{truckdata.name}}</td>
         <td> {{truckdata.serialNumber}}</td>
-        <td *ngIf = "truckdata.action =='CREATE'" class="Cbutton"> <button>Create Workshop order</button></td>
-        <td *ngIf = "truckdata.action =='OPEN'" class="Obutton"> <button>Open Workshop Order</button></td>
-     </tr>
+        <td  class="Cbutton">
+          
+          <button *ngIf = "truckdata.action =='CREATE'">Create Workshop order</button>
+          <button *ngIf = "truckdata.action =='OPEN'">Open Workshop Order</button>
+          <button>Create Service Report</button>
+        </td>  
+      </tr>
     </tbody>
  
 </table>
