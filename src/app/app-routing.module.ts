@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WorkshopstarterComponent } from './workshopstarter/workshopstarter.component';
-import { WorkshopComponent } from './workshop/workshop.component';
+import { Routes, RouterModule } from '@angular/router';  
 
 const routes: Routes = [ 
-  {path: '' ,  component: WorkshopComponent}
-
+  {path: '' ,  loadChildren: './workshop/workshop.module#WorkshopModule'}
 ];
 
 @NgModule({

@@ -1,22 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { WorkshopComponent } from './workshop/workshop.component';
-import { WorkshopstarterComponent } from './workshopstarter/workshopstarter.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HeaderComponent } from './template/header/header.component';
+import { AppComponent } from './app.component'; 
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    WorkshopComponent,
-    WorkshopstarterComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    SharedModule,
     AppRoutingModule
   ],
   providers: [],

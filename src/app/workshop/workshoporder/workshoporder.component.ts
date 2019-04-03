@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareService } from '../providers/';
-// export * from '../providers/shared.service';
+import { ShareService } from '../../core/services/';
 @Component({
-  selector: 'app-workshop',
-  templateUrl: './workshop.component.html',
-  styleUrls: ['./workshop.component.scss']
+  selector: 'workshop-workshoporder',
+  templateUrl: './workshoporder.component.html',
+  styleUrls: ['./workshoporder.component.scss']
 })
-export class WorkshopComponent implements OnInit {
+export class WorkshoporderComponent implements OnInit {
   trucklistdata: any;
   trucklist: any;
   data: any;
