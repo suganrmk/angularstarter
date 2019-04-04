@@ -9,7 +9,9 @@ const routes: Routes = [
     path: '', component: LandingComponent,
      children: [
       { path: '', component: WorkshoporderComponent },
-      { path: 'createworkorder/:id', component: CreateworkshoporderComponent }
+      { path: 'createworkshoporder/:serialNumber/:shipToPartyNo', component: CreateworkshoporderComponent }
+      
+
     ]
   }
 ];
