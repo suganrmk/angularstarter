@@ -14,6 +14,7 @@ export class WorkshoporderComponent implements OnInit {
 
   ngOnInit() {
     this.shareservice.getData('/assets/json/Trucklist.json').subscribe(res => { 
+      console.log(res['trucks'])
       this.trucklistdata =  res['trucks']; 
     });
   }
