@@ -17,4 +17,7 @@ export class WorkshoporderComponent implements OnInit {
       this.trucklistdata =  res['trucks']; 
     });
   }
+  getworkshopordernumber(){
+    
+  }
 }
