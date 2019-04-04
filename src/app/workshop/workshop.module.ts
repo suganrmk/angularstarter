@@ -4,14 +4,14 @@ import { WorkshoporderComponent } from './workshoporder/workshoporder.component'
 import { WorkshopRoutingModule } from './workshop-routing.module';
 import { LandingComponent } from './landing/landing.component';
 import { SharedModule } from '../shared/shared.module';
-import { GetworkshoporderComponent } from './getworkshoporder/getworkshoporder.component';
+import { CreateworkshoporderComponent } from './createworkshoporder/createworkshoporder.component';
 
 
 @NgModule({
   declarations: [
     WorkshoporderComponent,
     LandingComponent,
-    GetworkshoporderComponent
+    CreateworkshoporderComponent
   ],
   imports: [
     CommonModule,

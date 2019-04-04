@@ -8,12 +8,12 @@
   </thead>
   <tbody>
       <tr *ngFor="let truckdata of trucklistdata">
-        <td> {{truckdata.name}}</td>
+        <td> {{truckdata.truckName}}</td>
         <td> {{truckdata.serialNumber}}</td>
         <td  class="Cbutton">
           
-          <button *ngIf = "truckdata.isWorkOrderOpen =='true'">Open Workshop Order</button>
-          <button *ngIf = "truckdata.isWorkOrderOpen =='false'" (click)='getworkshopordernumber()'>Create Workshop order</button>
+          <button *ngIf = "truckdata.openWorkshopOrder =='true'">Open Workshop Order</button>
+          <button *ngIf = "truckdata.openWorkshopOrder =='false'" (click)='getworkshopordernumber(truckdata.serialNumber,truckdata.shipToPartyNo)'>Create Workshop order</button>
           <button>Create Service Report</button>
         </td>  
       </tr>
