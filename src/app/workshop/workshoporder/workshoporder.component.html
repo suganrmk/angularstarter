@@ -1,22 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Serial No.</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let truckdata of trucklistdata">
-        <td> {{truckdata.truckName}}</td>
-        <td> {{truckdata.serialNumber}}</td>
-        <td  class="Cbutton">
-          
-          <button *ngIf = "truckdata.openWorkshopOrder =='true'">Open Workshop Order</button>
-          <button *ngIf = "truckdata.openWorkshopOrder =='false'" (click)='getworkshopordernumber(truckdata.serialNumber,truckdata.shipToPartyNo)'>Create Workshop order</button>
-          <button>Create Service Report</button>
-        </td>  
+  <p-table [value]="trucklistdata">
+    <ng-template pTemplate="header">
+      <tr>
+          <th>Name</th>
+          <th>Serial No.</th>
+          <th>Action</th>
       </tr>
-    </tbody>
- 
-</table>
+    </ng-template>
+    <ng-template pTemplate="body" let-truck>
+      <tr>
+        <td>{{truck.truckName}}</td>
+        <td>{{truck.serialNumber}}</td>
+        <td>
+          <button *ngIf="truck.openWorkshopOrder =='true'">Open Workshop Order</button>
+          <button *ngIf="truck.openWorkshopOrder =='false'" [routerLink]="['/createworkshoporder/',truck.serialNumber, truck.shipToPartyNo ]">
+            Create Workshop order
+          </button>
+          <button>Create Service Report</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
