@@ -1,5 +1,5 @@
-export const api = {
-    production: true,
-    getWorkshop: '/assets/json/Trucklist.json'
-  };
+export const api = { 
+    getWorkshop: '/assets/json/Trucklist.json',
+    getTrucks: '/workshopservice/api/rest/trucks?lang=en'
+};
   

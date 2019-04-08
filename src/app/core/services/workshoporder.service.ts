@@ -17,4 +17,9 @@ export class WorkshoporderService {
           .pipe(map(data => data.trucks));
   }
 
+  getAllTruck(){
+    return this.apiService.post(api.getTrucks)
+    .pipe(map(data => data.trucks));
+  }
+
 }

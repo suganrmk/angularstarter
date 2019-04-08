@@ -1,4 +1,4 @@
-  <p-table [value]="trucklistdata">
+<p-table [value]="trucklistdata" >
     <ng-template pTemplate="header">
       <tr>
           <th>Name</th>
@@ -12,7 +12,7 @@
         <td>{{truck.serialNumber}}</td>
         <td>
           <button *ngIf="truck.openWorkshopOrder =='true'">Open Workshop Order</button>
-          <button *ngIf="truck.openWorkshopOrder =='false'" [routerLink]="['/createworkshoporder/',truck.serialNumber, truck.shipToPartyNo ]">
+          <button *ngIf="truck.openWorkshopOrder =='false'" [routerLink]="['/createorder/',truck.serialNumber, truck.shipToPartyNo ]">
             Create Workshop order
           </button>
           <button>Create Service Report</button>
