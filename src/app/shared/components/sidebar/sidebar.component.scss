@@ -1,10 +1,16 @@
-img{
-  width: 25px;
-  height: 25px;
-  padding:10px;
-  border-bottom:1px solid grey;
-  opacity: .4;
-}
-img:hover{
-   cursor: pointer;
+.sidebaricon{
+  display: flex;
+  flex-direction: column;
+  li{
+    text-align: center;
+    padding: 15px 0; 
+    color: #979797; 
+    &.active{
+      border-bottom: 1px solid #dbdbdb;
+      color: #ff6700;
+    }
+    &:focus{
+      outline: none
+    }
+  }
 }

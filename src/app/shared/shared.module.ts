@@ -4,10 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { FooterComponent } from './components/footer/footer.component';  
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/footer/footer.component';   
 import {TableModule} from 'primeng/table';
-
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -15,9 +14,9 @@ import {TableModule} from 'primeng/table';
     FooterComponent
   ],
   imports: [
-    CommonModule,
-    // BrowserAnimationsModule,
+    CommonModule, 
     HttpClientModule,
+    RouterModule,
     FormsModule
   ],
   exports: [

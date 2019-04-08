@@ -30,13 +30,7 @@ export class ApiService {
   }
  
 
-  post(path: string, body: Object = {}): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'IV-USER': 'kxdel0095',
-      'ecid': 'FOV-FT-TruckListService-Case1' });
-  let options = { headers: headers };
-  
+  post(path: string, body: Object = {}, options): Observable<any> { 
     return this.http.post(
       `${environment.serverUrl}${path}`,
       JSON.stringify(body) , options
