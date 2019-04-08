@@ -17,8 +17,8 @@ export class ApiService {
     return  throwError(error.error);
   }
 
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${path}`, { params })
+  get(path: string,  options): Observable<any> {
+    return this.http.get( `${environment.serverUrl}${path}`, options)
       .pipe(catchError(this.formatErrors));
   }
 
@@ -30,10 +30,10 @@ export class ApiService {
   }
  
 
-  post(path: string, body: Object = {}, options): Observable<any> { 
+  post(path: string, body: Object = {}, Options): Observable<any> { 
     return this.http.post(
       `${environment.serverUrl}${path}`,
-      JSON.stringify(body) , options
+      JSON.stringify(body) , Options
     ).pipe(catchError(this.formatErrors));
   }
 
