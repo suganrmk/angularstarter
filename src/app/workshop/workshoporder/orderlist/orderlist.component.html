@@ -11,8 +11,8 @@
         <td>{{truck.truckName}}</td>
         <td>{{truck.serialNumber}}</td>
         <td>
-          <button *ngIf="truck.openWorkshopOrder =='true'">Open Workshop Order</button>
-          <button *ngIf="truck.openWorkshopOrder =='false'" [routerLink]="['/createorder/',truck.serialNumber, truck.shipToPartyNo ]">
+          <button *ngIf="truck.openWorkshopOrder">Open Workshop Order</button>
+          <button *ngIf="!truck.openWorkshopOrder" [routerLink]="['/createorder/',truck.serialNumber, truck.shipToPartyNo ]">
             Create Workshop order
           </button>
           <button>Create Service Report</button>
