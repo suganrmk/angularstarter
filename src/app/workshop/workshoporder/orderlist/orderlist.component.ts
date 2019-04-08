@@ -12,13 +12,13 @@ export class OrderlistComponent  implements OnInit {
   constructor(private _workshoporderService: WorkshoporderService) { }
 
   ngOnInit() {
-   // this._workshoporderService.getAll().subscribe(res =>  this.trucklistdata =  res);
+   this._workshoporderService.getAll().subscribe(res =>  this.trucklistdata =  res);
 
 
-    this._workshoporderService.getAllTruck().subscribe(res => { 
-      console.log(res['trucks'])
-      this.trucklistdata =  res['trucks']; 
-    });
+    // this._workshoporderService.getAllTruck().subscribe(res => { 
+    //   console.log(res['trucks'])
+    //   this.trucklistdata =  res['trucks']; 
+    // });
 
 
   } 
