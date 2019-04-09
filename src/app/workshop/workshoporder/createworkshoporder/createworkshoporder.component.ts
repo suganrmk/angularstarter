@@ -10,13 +10,14 @@ import { WorkshoporderService } from '../../../core/services/';
 })
 export class CreateworkshoporderComponent implements OnInit {
   workshoporder: any;
-  partyid: String;
-  serialId: String;
+  partyNo: Number;
+  serialNo: String;
+  paramObj: any; 
   constructor(private _route: ActivatedRoute, private _workshoporderService: WorkshoporderService) { }
 
   ngOnInit() {
     this.workshoporder = {
-      truckName: 'string',
+      truckName: null,
       author: 'John Dee',
       reporter: 'John Dee',
       creationDate: new Date(),
@@ -30,19 +31,21 @@ export class CreateworkshoporderComponent implements OnInit {
 
   setTruckdata() { 
     this._route.paramMap.pipe(
-      switchMap(params => { 
-        let paramObj  = {truckName: +params.get("truckname"),serialNumber: +params.get("serialid") , shipToPartyNo:+params.get("partyid")};
-        console.log(paramObj);
-        return this._workshoporderService.getWorkordernumber(paramObj);
+      switchMap(params => {
+        this.workshoporder.truckName =  params.get("truckname");
+        this.serialNo = params.get("serialid");
+        this.partyNo = +params.get("partyid");
+        this.paramObj  = {serialNumber: this.serialNo , shipToPartyNo:this.partyNo }; 
+        return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
-    ).subscribe(workOrderNumber => {this.workshoporder.workshopOrderNumber = workOrderNumber , console.log(typeof(workOrderNumber))}) 
+    ).subscribe(workOrderNumber => {this.workshoporder.workshopOrderNumber = workOrderNumber}) 
   }
 
-
-
-  submitform() {
-    console.log(this.workshoporder)
-    this._workshoporderService.createorder(this.workshoporder);
+  submitform() { 
+    console.log(this.paramObj)
+    this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }

@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
 import { api } from '../constants';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { HttpHeaders, HttpClient, HttpParams} from '@angular/common/http'; 
 @Injectable()
 export class WorkshoporderService {
   constructor(
@@ -29,23 +28,25 @@ export class WorkshoporderService {
   }
 
 
-  getWorkordernumber(paramObj): Observable<[string]> {
+  getWorkordernumber( params: HttpParams = new HttpParams()): Observable<[string]> {
     let headers = new HttpHeaders({
       'IV-USER': 'kxdel0095',
       'ecid': 'FOV-FT-TruckListService-Case1' 
     });   
-    return this.apiService.get(api.getWorkordernumber, paramObj, headers)
+    let options = { headers , params  };
+    return this.apiService.get(api.getWorkordernumber, options)
       .pipe(map(data => data.workOrderNumber));
   }  
  
 
-  createorder(data): Observable<[string]> {
+  createorder(data , params): Observable<[string]> {
     let headers = new HttpHeaders({
       'IV-USER': 'kxdel0095',
       'ecid': 'FOV-FT-TruckListService-Case1'
     });
-    let options = { headers: headers };
+    let options = { headers , params  };
+    console.log(api.createorder)
     return this.apiService.post(api.createorder, data, options)
-      .pipe(map(data => data.trucks));
+      .pipe(map(data => data));
   }
 }
