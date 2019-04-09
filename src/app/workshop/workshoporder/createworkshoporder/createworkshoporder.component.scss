@@ -60,6 +60,28 @@ button.btn{
     width: 100%;
     border-bottom: 1px solid #ccc;
 }
+.truckDetailSection{
+    display: flex;
+}
+
+.RightTruckDetail {
+    padding: 10px 0 0 20px;
+    font-size: 14px;
+    ul{
+        li{
+            margin-top: 10px;
+
+            > label {
+                font-weight: bold;
+                margin: 0 0 0 40px;
+            }
+        }
+    }
+}
+
+.truckname{
+    font-weight: bold
+}
 
 // Need to remove
 
@@ -69,5 +91,16 @@ p-toast{
 }
 
 .ui-toast-top-right{
-    top: 90px;
+    top: 10px;
 }
+ 
+:host ::ng-deep {
+    .ui-toast-message-success{
+        background: #535353;
+    }
+    .ui-toast .ui-toast-message-text-content{
+        margin: 0;
+        color: #fff;
+   }
+}
+

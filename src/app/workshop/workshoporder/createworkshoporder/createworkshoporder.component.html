@@ -1,7 +1,17 @@
 <div class="truckdetail">
-    <div class="containerspace">
-  <img src="assets/images/e_rx_60_35_m.png">
-</div>
+  <div class="containerspace">
+    <div class="truckDetailSection">
+    <div class="leftTruckimg">
+      <img src="assets/images/e_rx_60_35_m.png">
+    </div>
+    <div class="RightTruckDetail">
+      <label class="truckname">{{workshoporder?.truckName}}</label>
+      <ul class="TruckDetai">
+        <li><span>Serial No:</span><label><label>{{serialNo}}</label></label></li>
+      </ul>
+    </div>
+  </div>
+  </div>
 </div>
 <div class="containerspace">
   <h3 class="orderTitle">Create Workshop order</h3>
@@ -13,7 +23,7 @@
       </div>
       <div class="form-group">
         <label>Reporter:</label>
-        <input id="reporter"  required  [(ngModel)]="workshoporder.reporter" name="reporter"  type="text" />
+        <input id="reporter" required [(ngModel)]="workshoporder.reporter" name="reporter" type="text" />
       </div>
       <div class="form-group">
         <label>Creation Date:</label>
@@ -25,11 +35,12 @@
       </div>
       <div class="form-group">
         <label>Work order Description:</label>
-        <textarea  id="workshopOrderDescription"  required  [(ngModel)]="workshoporder.workshopOrderDescription" name="workshopOrderDescription"  cols="59" rows="6"></textarea>
+        <textarea id="workshopOrderDescription" required [(ngModel)]="workshoporder.workshopOrderDescription"
+          name="workshopOrderDescription" cols="59" rows="6"></textarea>
       </div>
       <div class="form-group">
-        <label >Out of Order:</label>
-        <input id="name"  required  [(ngModel)]="workshoporder.outOfOrder" name="outOfOrder"  type="checkbox">
+        <label>Out of Order:</label>
+        <input id="name" required [(ngModel)]="workshoporder.outOfOrder" name="outOfOrder" type="checkbox">
       </div>
       <div class="form-group buttonholder">
         <button #name (click)="submitform()" class="btn tmeBtn">Create</button>
@@ -40,4 +51,4 @@
 </div>
 
 
-<p-toast ></p-toast>
+<p-toast [style]="{marginTop: '120px', marginRight: '20px'}" sticky="true"></p-toast>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { WorkshoporderService } from '../../../core/services/'; 
-import {MessageService} from 'primeng/api';
+import { WorkshoporderService } from '../../../core/services/';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-createworkshoporder',
@@ -16,8 +16,8 @@ export class CreateworkshoporderComponent implements OnInit {
   paramObj: any;
   constructor(
     private _route: ActivatedRoute,
-     private _workshoporderService: WorkshoporderService,
-     private _messageService: MessageService) { }
+    private _workshoporderService: WorkshoporderService,
+    private _messageService: MessageService) { }
 
   ngOnInit() {
     this.workshoporder = {
@@ -33,27 +33,25 @@ export class CreateworkshoporderComponent implements OnInit {
 
   }
 
-  setTruckdata() { 
+  setTruckdata() {
     this._route.paramMap.pipe(
       switchMap(params => {
-        this.workshoporder.truckName =  params.get("truckname");
+        this.workshoporder.truckName = params.get("truckname");
         this.serialNo = params.get("serialid");
         this.partyNo = +params.get("partyid");
-        this.paramObj  = {serialNumber: this.serialNo , shipToPartyNo:this.partyNo }; 
+        this.paramObj = { serialNumber: this.serialNo, shipToPartyNo: this.partyNo };
         return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
-    ).subscribe(workOrderNumber => {this.workshoporder.workshopOrderNumber = workOrderNumber}) 
+    ).subscribe(workOrderNumber => { this.workshoporder.workshopOrderNumber = workOrderNumber })
   }
 
-  submitform() { 
-    console.log(this.paramObj);
-    this._messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+  submitform() {
+    this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => {
+      if (res) {
+        this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Workshoporder Sucessfully Created' });
 
-    // this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => { 
-    //   if(res){
-    //     this._messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
-    //   }
-    // });
+      }
+    });
   }
 
 }
