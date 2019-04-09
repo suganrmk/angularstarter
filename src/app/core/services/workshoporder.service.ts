@@ -39,13 +39,14 @@ export class WorkshoporderService {
   }  
  
 
-  createorder(data): Observable<[string]> {
+  createorder(data , paramObj): Observable<[string]> {
     let headers = new HttpHeaders({
       'IV-USER': 'kxdel0095',
       'ecid': 'FOV-FT-TruckListService-Case1'
     });
-    let options = { headers: headers };
-    return this.apiService.post(api.createorder, data, options)
-      .pipe(map(data => data.trucks));
+    let options = { headers: headers , paramObj  };
+    console.log(api.createorder)
+    return this.apiService.post(api.createorder, data, headers , paramObj)
+      .pipe(map(data => data));
   }
 }

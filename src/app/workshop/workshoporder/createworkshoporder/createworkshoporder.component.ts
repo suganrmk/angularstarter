@@ -12,6 +12,7 @@ export class CreateworkshoporderComponent implements OnInit {
   workshoporder: any;
   partyid: String;
   serialId: String;
+  paramObj: any;
   constructor(private _route: ActivatedRoute, private _workshoporderService: WorkshoporderService) { }
 
   ngOnInit() {
@@ -31,17 +32,18 @@ export class CreateworkshoporderComponent implements OnInit {
   setTruckdata() { 
     this._route.paramMap.pipe(
       switchMap(params => { 
-        let paramObj  = {serialNumber: +params.get("serialid") , shipToPartyNo:+params.get("partyid")};
-        return this._workshoporderService.getWorkordernumber(paramObj);
+        this.paramObj  = {serialNumber: +params.get("serialid") , shipToPartyNo:+params.get("partyid")};
+        return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
-    ).subscribe(workOrderNumber => {this.workshoporder.workshopOrderNumber = workOrderNumber , console.log(typeof(workOrderNumber))}) 
+    ).subscribe(workOrderNumber => {this.workshoporder.workshopOrderNumber = workOrderNumber}) 
   }
 
 
 
-  submitform() {
-    console.log(this.workshoporder)
-    this._workshoporderService.createorder(this.workshoporder);
+  submitform() { 
+    this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }
