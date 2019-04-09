@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '', component: WorkshoporderComponent,
      children: [
       { path: '', component: OrderlistComponent }, 
-      { path: 'createorder/:truckname/:serialid/:partyid', component: CreateworkshoporderComponent }
+      { path: 'createorder/:truckname/:serialid/:partyid', component: CreateworkshoporderComponent },
+      { path: 'trucklist' , component: OrderlistComponent }
     ]
   }
 ]; 
