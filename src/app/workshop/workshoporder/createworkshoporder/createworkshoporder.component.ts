@@ -31,7 +31,8 @@ export class CreateworkshoporderComponent implements OnInit {
   setTruckdata() { 
     this._route.paramMap.pipe(
       switchMap(params => { 
-        let paramObj  = {serialNumber: +params.get("serialid") , shipToPartyNo:+params.get("partyid")};
+        let paramObj  = {truckName: +params.get("truckname"),serialNumber: +params.get("serialid") , shipToPartyNo:+params.get("partyid")};
+        console.log(paramObj);
         return this._workshoporderService.getWorkordernumber(paramObj);
       })
     ).subscribe(workOrderNumber => {this.workshoporder.workshopOrderNumber = workOrderNumber , console.log(typeof(workOrderNumber))}) 
