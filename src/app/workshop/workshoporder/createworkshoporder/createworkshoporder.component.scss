@@ -60,3 +60,14 @@ button.btn{
     width: 100%;
     border-bottom: 1px solid #ccc;
 }
+
+// Need to remove
+
+p-toast{
+    position: relative;
+    z-index: 999;
+}
+
+.ui-toast-top-right{
+    top: 90px;
+}

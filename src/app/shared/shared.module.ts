@@ -7,6 +7,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';   
 import {TableModule} from 'primeng/table';
 import { RouterModule } from '@angular/router';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -24,7 +26,9 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    TableModule
-  ]
+    TableModule,
+    ToastModule
+  ],
+  providers:[MessageService]
 })
 export class SharedModule { }
