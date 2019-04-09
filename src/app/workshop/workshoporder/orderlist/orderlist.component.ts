@@ -17,4 +17,6 @@ export class OrderlistComponent  implements OnInit {
    this._workshoporderService.getAllTruck().subscribe(res =>  this.trucklistdata =  res); 
  } 
 
+  
+
 }

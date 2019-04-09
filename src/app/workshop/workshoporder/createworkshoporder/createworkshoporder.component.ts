@@ -21,7 +21,7 @@ export class CreateworkshoporderComponent implements OnInit {
 
   ngOnInit() {
     this.workshoporder = {
-      truckName: 'string',
+      truckName: null,
       author: 'John Dee',
       reporter: 'John Dee',
       creationDate: new Date(),
@@ -36,6 +36,7 @@ export class CreateworkshoporderComponent implements OnInit {
   setTruckdata() { 
     this._route.paramMap.pipe(
       switchMap(params => {
+        this.workshoporder.truckName =  params.get("truckname");
         this.serialNo = params.get("serialid");
         this.partyNo = +params.get("partyid");
         this.paramObj  = {serialNumber: this.serialNo , shipToPartyNo:this.partyNo }; 
