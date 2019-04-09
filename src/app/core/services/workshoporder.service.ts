@@ -29,25 +29,23 @@ export class WorkshoporderService {
   }
 
 
-  getWorkordernumber(): Observable<[string]> {
+  getWorkordernumber(paramObj): Observable<[string]> {
     let headers = new HttpHeaders({
       'IV-USER': 'kxdel0095',
       'ecid': 'FOV-FT-TruckListService-Case1' 
-    });
-    let options = { headers: headers };   
-    return this.apiService.get(api.getWorkordernumber,   options )
-      .pipe(map(data => data));
+    });   
+    return this.apiService.get(api.getWorkordernumber, paramObj, headers)
+      .pipe(map(data => data.workOrderNumber));
   }  
+ 
 
-
-  // getWorkordernumber(): Observable<any> { 
-  //   let headers = new HttpHeaders({
-  //     'IV-USER': 'kxdel0095',
-  //     'ecid': 'FOV-FT-TruckListService-Case1'
-  //   });
-  //   let options = { headers: headers };
-  //   return this.apiService.post(api., null, options)
-  //     .pipe(map(data => data.trucks));
-  // };
-
+  createorder(data): Observable<[string]> {
+    let headers = new HttpHeaders({
+      'IV-USER': 'kxdel0095',
+      'ecid': 'FOV-FT-TruckListService-Case1'
+    });
+    let options = { headers: headers };
+    return this.apiService.post(api.createorder, data, options)
+      .pipe(map(data => data.trucks));
+  }
 }

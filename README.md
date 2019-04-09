@@ -30,4 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Reference
 
+https://github.com/gothinkster/angular-realworld-example-app
+
+https://github.com/ngx-rocket/starter-kit
+
 https://medium.com/@christo8989/angular-6-url-parameters-860db789db85
