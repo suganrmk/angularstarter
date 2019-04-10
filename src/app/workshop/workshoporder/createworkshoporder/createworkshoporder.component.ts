@@ -52,7 +52,7 @@ export class CreateworkshoporderComponent implements OnInit {
       if (res) {
         this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Workshoporder Sucessfully Created' });
 
-        // this._router.navigate(['/trucklist']);
+        this._router.navigate(['/trucklist']);
       }
     });
   }
