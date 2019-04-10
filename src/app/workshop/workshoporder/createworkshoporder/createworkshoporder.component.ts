@@ -48,7 +48,7 @@ export class CreateworkshoporderComponent implements OnInit {
   submitform() {
     this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => {
       if (res) {
-        this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Workshoporder Sucessfully Created' });
+        this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Workshoporder Sucessfully Updated' });
 
       }
     });
