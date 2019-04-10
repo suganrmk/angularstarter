@@ -3,21 +3,21 @@ header {
     padding: 0px;
     color: #fff;
     float: left;
-    width:100%;
+    width: 100%;
 }
 
-.backheaderbtn{
+.backheaderbtn {
     background: #ff6700;
     background-image: url('../../../../assets/images/headerstrip1.png');
     width: 91px;
-    display: inline-block; 
-    height: 48px;
+    display: inline-block;
+    height: 45px;
     background-repeat: no-repeat;
     background-position: 20px 0px;
     float: left;
     font-size: 25px;
 
-    i{
+    i {
         margin: 12px 10px;
     }
 }
@@ -25,51 +25,103 @@ header {
 .pagetitle {
     float: left;
     background: #3e3e3e;
-    padding: 15px 30px 15px 0px;
+    padding: 13px 30px 14px 0px;
     width: 200px;
     background-image: url('../../../../assets/images/headerstrip2.png');
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position: 170px 0;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Source Sans Pro,Segoe UI,Helvetica,sans-serif
 }
 
 ul.breadcrum {
     float: left;
-    li{
+
+    li {
         float: left;
         font-size: 14px;
         margin: 0px 11px 0 7px;
-    
+        padding: 15.5px 0;
+
     }
 }
-img.gridicon{
-  width:30px;
-  height:30px;
-  padding:10px;
-  font-weight:1000;
+
+img.gridicon {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    font-weight: 1000;
 }
 
-.btn--back{
-width: 45px;
+.btn--back {
+    width: 45px;
     height: 45px;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: center;
     justify-content: center;
-    -ms-flex-align: center;
     align-items: center;
-    -ms-transform: skew(-35deg);
+    -webkit-transform: skew(-35deg);
     transform: skew(-35deg);
-    -ms-transform-origin: left bottom;
+    -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
     border-right: 1px solid #404040;
     text-decoration: none;
     background-color: #545454;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 2;
+    float: left;
+    left: -32px;
+    position: relative;
+
+    >* {
+        -ms-transform: skew(35deg);
+        transform: skew(35deg);
+    }
 }
-.disclosureleft{
+
+.disclosureleft {
     font-size: 16px;
     color: #f2f2f2;
     pointer-events: none;
     margin: 0;
+}
+
+// scss
+.header--right {
+    float: right;
+}
+
+.useraction-link {
+    float: right; 
+    background: #3e3e3e;
+    padding: 0 0 0 20px;
+
+    li {
+        float: left;
+        padding: 11px 10px;
+        font-size: 20px;
+
+        >img {
+            max-width: 55px;
+            max-height: 15px;
+            margin: 0 5px 0 15px;
+        }
+    }
+}
+
+.useraction-link_a {
+    float: left;
+    width: auto;
+    left: 3px;
+    padding: 0 15px 0 0;
+    li {
+        float: left;
+        padding: 13px 7px;
+        font-size: 14px;
+
+        &.btn--back {
+            padding: 0;
+            left: 0;
+        }
+    }
 }
