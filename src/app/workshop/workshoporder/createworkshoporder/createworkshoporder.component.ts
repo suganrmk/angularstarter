@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { WorkshoporderService } from '../../../core/services/';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createworkshoporder',
@@ -17,7 +18,8 @@ export class CreateworkshoporderComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
-    private _messageService: MessageService) { }
+    private _messageService: MessageService,
+    private _router:Router) { }
 
   ngOnInit() {
     this.workshoporder = {
@@ -50,6 +52,7 @@ export class CreateworkshoporderComponent implements OnInit {
       if (res) {
         this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Workshoporder Sucessfully Updated' });
 
+        this._router.navigate(['/trucklist']);
       }
     });
   }
