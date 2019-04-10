@@ -37,7 +37,7 @@ ul.breadcrum {
     li{
         float: left;
         font-size: 14px;
-        margin: 16px 11px 0 7px;
+        margin: 0px 11px 0 7px;
     
     }
 }
@@ -46,4 +46,30 @@ img.gridicon{
   height:30px;
   padding:10px;
   font-weight:1000;
+}
+
+.btn--back{
+width: 45px;
+    height: 45px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-transform: skew(-35deg);
+    transform: skew(-35deg);
+    -ms-transform-origin: left bottom;
+    transform-origin: left bottom;
+    border-right: 1px solid #404040;
+    text-decoration: none;
+    background-color: #545454;
+    cursor: pointer;
+    z-index: 1000;
+}
+.disclosureleft{
+    font-size: 16px;
+    color: #f2f2f2;
+    pointer-events: none;
+    margin: 0;
 }
