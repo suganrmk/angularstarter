@@ -1,35 +1,63 @@
-th,td{ 
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    vertical-align: middle;
-  }
-  th{
-    border-left: 1px solid #dadada;
-    font-weight: normal;
-    color:#737373;
-    height:35px;
-  }
-  td{
-    height: 50px;
-    vertical-align: middle;
-  }
+@import '../../../../assets/styles/abstracts/variable';
+@import '../../../../assets/styles/abstracts/mixins';
+
+ 
+  
   button {
     background: #fff;
     border: none;
-    color: #969696;
+    color: $fontR;
     border: 1px solid #e6e6e6;
     padding: 7px 11px; 
     margin: 0 5px;
     border-radius: 1px;
     box-shadow: 0 0 2px 0px #eae7e7; 
-    width:200px;
+    white-space: nowrap;
+    flex: 1;
+}
 
+
+
+
+// scss final
+:host ::ng-deep .ui-table {
+  .ui-table-thead{
+      >tr>th{
+        color: $fontL;
+        font-size: 12px; 
+        padding: 0 8px;
+        @include regular();
+        position: -webkit-sticky;
+        position: sticky;
+        border: none;
+        top: 0;
+        box-shadow: 0 0 0 1px #dadada;
+        background: #fff;
+        vertical-align: middle;
+        height:35px;
+        text-align: left;
+      }
+  }
+
+  .ui-table-tbody{
+    >tr>td{
+      color: $fontR;
+        font-size: 14px; 
+        @include regular();
+        height: 50px;
+        padding: 0 8px;
+        vertical-align: middle;
+        border-bottom: 1px solid #f2f2f2;
+    }
+  }
+}  
+.tablefiltericon{
+  font-size: 16px;
+  float: right;
 }
-.icon{
-  font-size:24px;
-  width:35px;
-  padding-left:10px;
-}
-th.namecolumn{
-  padding-left:10px;
+
+.tablebtnHolder{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -5px;
 }
