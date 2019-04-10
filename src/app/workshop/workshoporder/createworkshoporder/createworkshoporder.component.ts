@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { WorkshoporderService } from '../../../core/services/';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common'
 
 @Component({
   selector: 'app-createworkshoporder',
@@ -15,18 +16,19 @@ export class CreateworkshoporderComponent implements OnInit {
   partyNo: Number;
   serialNo: String;
   paramObj: any;
+  display: boolean = false;
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
-    private _messageService: MessageService,
-    private _router:Router) { }
+    private _confirmationService: ConfirmationService,
+    private _router: Router) { }
 
   ngOnInit() {
     this.workshoporder = {
       truckName: null,
       author: 'John Dee',
       reporter: 'John Dee',
-      creationDate: new Date(),
+      creationDate: formatDate(new Date(), 'dd.MM.yyyy', 'en'),
       workshopOrderNumber: null,
       workshopOrderDescription: null,
       outOfOrder: false
@@ -34,6 +36,7 @@ export class CreateworkshoporderComponent implements OnInit {
     this.setTruckdata();
 
   }
+
 
   setTruckdata() {
     this._route.paramMap.pipe(
@@ -50,9 +53,13 @@ export class CreateworkshoporderComponent implements OnInit {
   submitform() {
     this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => {
       if (res) {
-        this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Workshoporder Sucessfully Updated' });
+        this._confirmationService.confirm({
+          message: 'Work Order is Successfully created',
+          accept: () => {
+            this._router.navigate(['/trucklist']);
+          }
+        });
 
-        this._router.navigate(['/trucklist']);
       }
     });
   }

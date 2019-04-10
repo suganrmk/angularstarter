@@ -11,3 +11,11 @@
 
 <workshop-footer></workshop-footer>
 
+
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+    <p-footer>
+        <div class="footer--modal">
+            <a (click)="cd.accept()" ><i class="icon icon-right "></i>Continue</a>
+        </div>
+    </p-footer>
+</p-confirmDialog>
