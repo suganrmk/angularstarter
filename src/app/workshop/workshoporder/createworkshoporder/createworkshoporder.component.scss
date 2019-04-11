@@ -1,12 +1,14 @@
 @import '../../../../assets/styles/abstracts/variable';
 @import '../../../../assets/styles/abstracts/mixins';
 
-
+ 
+ 
 
 .containerspace {
     float: left;
     width: 100%;
     padding: 10px 45px;
+    box-sizing: border-box;
 }
 
 .workorderform {
@@ -47,7 +49,6 @@
         }
         textarea#workshopOrderDescription {
             resize: none;
-            text-align: justify;
             font-size: 14px;
             @include regular();
         }
