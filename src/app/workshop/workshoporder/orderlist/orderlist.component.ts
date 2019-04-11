@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkshoporderService } from '../../../core/services/'; 
-
+import { WorkshoporderService } from '../../../core/services/';
+import { IworkorderList } from '../../../core/models/workshop';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'workshop-orderlist',
   templateUrl: './orderlist.component.html',
   styleUrls: ['./orderlist.component.scss']
 })
-export class OrderlistComponent  implements OnInit {
-  trucklistdata: any;  
+export class OrderlistComponent implements OnInit {
+  trucklistdata: any[];  
 
   constructor(private _workshoporderService: WorkshoporderService) { }
 
- 
 
- ngOnInit() { 
-   this._workshoporderService.getAllTruck().subscribe(res =>  this.trucklistdata =  res); 
- } 
+  ngOnInit() {
+    this._workshoporderService.getAllTruck().subscribe(res => { this.trucklistdata = res });
+  }
 
-  
+
 
 }

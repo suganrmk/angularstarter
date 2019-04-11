@@ -5,6 +5,7 @@ import { WorkshoporderService } from '../../../core/services/';
 import { ConfirmationService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common'
+import { Iworkorder } from '../../../core/models/workshop'
 
 @Component({
   selector: 'app-createworkshoporder',
@@ -12,7 +13,7 @@ import { formatDate } from '@angular/common'
   styleUrls: ['./createworkshoporder.component.scss']
 })
 export class CreateworkshoporderComponent implements OnInit {
-  workshoporder: any;
+  workshoporder: any; 
   partyNo: Number;
   serialNo: String;
   paramObj: any;
@@ -20,17 +21,17 @@ export class CreateworkshoporderComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
-    private _confirmationService: ConfirmationService,
+    private _confirmationService: ConfirmationService,  
     private _router: Router) { }
 
   ngOnInit() {
     this.workshoporder = {
-      truckName: null,
+      truckName: '',
       author: 'John Dee',
       reporter: 'John Dee',
       creationDate: formatDate(new Date(), 'dd.MM.yyyy', 'en'),
-      workshopOrderNumber: null,
-      workshopOrderDescription: null,
+      workshopOrderNumber: 0,
+      workshopOrderDescription:  '',
       outOfOrder: false
     }
     this.setTruckdata();
@@ -47,9 +48,9 @@ export class CreateworkshoporderComponent implements OnInit {
         this.paramObj = { serialNumber: this.serialNo, shipToPartyNo: this.partyNo };
         return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
-    ).subscribe(workOrderNumber => { this.workshoporder.workshopOrderNumber = workOrderNumber })
+    ).subscribe(workOrderNumber => { this.workshoporder.workshopOrderNumber = workOrderNumber, console.log(typeof(workOrderNumber), this.workshoporder) })
   }
-
+ 
   submitform() {
     this._workshoporderService.createorder(this.workshoporder, this.paramObj).subscribe(res => {
       if (res) {
