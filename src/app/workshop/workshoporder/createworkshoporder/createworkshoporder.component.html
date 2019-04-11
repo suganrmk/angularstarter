@@ -15,7 +15,7 @@
 </div>
 <div class="containerspace">
   <h3 class="orderTitle">Create Workshop order</h3>
-  <form #heroForm="ngForm">
+  <form #workshoporderForm="ngForm">
     <div class="workorderform">
       <div class="form-group">
         <label>Author:</label>
@@ -43,7 +43,7 @@
         <input id="name" required [(ngModel)]="workshoporder.outOfOrder" name="outOfOrder" type="checkbox">
       </div>
       <div class="form-group buttonholder">
-        <button #name (click)="submitform()" class="btn tmeBtn">Create</button>
+        <button [disabled]="!workshoporderForm.form.valid" (click)="submitform()" class="btn tmeBtn">Create</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Cancel</button>
       </div>
     </div>

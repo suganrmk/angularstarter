@@ -75,6 +75,9 @@ button.btn {
         background: #ff6700;
         color: #fff;
     }
+    &[disabled]{
+        cursor: default;
+    }
 }
 
 .orderTitle {
