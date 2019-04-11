@@ -35,12 +35,12 @@
       </div>
       <div class="form-group">
         <label>Workshop order description:</label>
-        <textarea id="workshopOrderDescription" required [(ngModel)]="workshoporder.workshopOrderDescription"
+        <textarea id="workshopOrderDescription"   [(ngModel)]="workshoporder.workshopOrderDescription"
           name="workshopOrderDescription" cols="60" rows="8" maxlength="2000"  placeholder="Please enter"></textarea>
      </div>
       <div class="form-group">
         <label>Out of order:</label>
-        <input id="name" required [(ngModel)]="workshoporder.outOfOrder" name="outOfOrder" type="checkbox">
+        <input id="name"   [(ngModel)]="workshoporder.outOfOrder" name="outOfOrder" type="checkbox">
       </div>
       <div class="form-group buttonholder">
         <button [disabled]="!workshoporderForm.form.valid" (click)="submitform()" class="btn tmeBtn">Create</button>

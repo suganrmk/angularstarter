@@ -1,8 +1,7 @@
 @import '../../../../assets/styles/abstracts/variable';
 @import '../../../../assets/styles/abstracts/mixins';
 
- 
- 
+
 
 .containerspace {
     float: left;
@@ -49,6 +48,7 @@
         }
         textarea#workshopOrderDescription {
             resize: none;
+            text-align: justify;
             font-size: 14px;
             @include regular();
         }
@@ -76,8 +76,9 @@ button.btn {
         background: #ff6700;
         color: #fff;
     }
-    &[disabled]{
+    &[disabled]{    
         cursor: default;
+        opacity: .7;
     }
 }
 
@@ -115,6 +116,10 @@ button.btn {
 
 .truckname {
     font-weight: bold
+}
+
+.workorderform .ng-invalid{
+    box-shadow: 0 0 0px 1px red;
 }
 
 /// need to remove
