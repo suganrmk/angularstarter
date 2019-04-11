@@ -30,16 +30,16 @@
         <span>{{workshoporder.creationDate}}</span> 
       </div>
       <div class="form-group">
-        <label>Work order Number:</label>
+        <label>Number:</label>
         <span>{{workshoporder.workshopOrderNumber}}</span>
       </div>
       <div class="form-group">
-        <label>Work order Description:</label>
+        <label>Workshop order description:</label>
         <textarea id="workshopOrderDescription" required [(ngModel)]="workshoporder.workshopOrderDescription"
-          name="workshopOrderDescription" cols="25" rows="4" maxlength="2000"  placeholder="Please enter"></textarea>
+          name="workshopOrderDescription" cols="60" rows="8" maxlength="2000"  placeholder="Please enter"></textarea>
      </div>
       <div class="form-group">
-        <label>Out of Order:</label>
+        <label>Out of order:</label>
         <input id="name" required [(ngModel)]="workshoporder.outOfOrder" name="outOfOrder" type="checkbox">
       </div>
       <div class="form-group buttonholder">

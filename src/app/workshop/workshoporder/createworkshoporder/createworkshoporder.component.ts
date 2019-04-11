@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { WorkshoporderService } from '../../../core/services/';
@@ -22,7 +22,10 @@ export class CreateworkshoporderComponent implements OnInit {
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
     private _confirmationService: ConfirmationService,  
-    private _router: Router) { }
+    private renderer: Renderer2,
+    private _router: Router) {
+      this.renderer.addClass(document.body, 'hidesidebar');
+     }
 
   ngOnInit() {
     this.workshoporder = {
@@ -34,8 +37,7 @@ export class CreateworkshoporderComponent implements OnInit {
       workshopOrderDescription:  '',
       outOfOrder: false
     }
-    this.setTruckdata();
-
+    this.setTruckdata(); 
   }
 
 
@@ -65,4 +67,7 @@ export class CreateworkshoporderComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(){
+    this.renderer.removeClass(document.body, 'hidesidebar');
+  }
 }
