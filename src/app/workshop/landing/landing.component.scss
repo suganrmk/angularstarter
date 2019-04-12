@@ -129,5 +129,9 @@ p-toast {
         right: 0;
         background: #00000052;
     }
+
+    p-confirmDialog{
+        z-index: 3;
+    }
 }
 
