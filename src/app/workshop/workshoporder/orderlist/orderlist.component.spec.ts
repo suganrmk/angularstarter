@@ -25,7 +25,7 @@ describe('OrderlistComponent', () => {
     fixture.detectChanges();
   });
 
-  it('200, Create Order Page Successfully Loaded', () => {
+  it('200, Order list Page Successfully Loaded', () => {
     const fixture = TestBed.createComponent(OrderlistComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
