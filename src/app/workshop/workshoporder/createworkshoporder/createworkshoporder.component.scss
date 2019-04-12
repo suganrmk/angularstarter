@@ -51,6 +51,7 @@
             text-align: justify;
             font-size: 14px;
             @include regular();
+            padding: 10px;
         }
 
         textarea#workshopOrderDescription:focus {
