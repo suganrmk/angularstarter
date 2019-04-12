@@ -28,8 +28,8 @@ export class CreateworkshoporderComponent implements OnInit {
   ngOnInit() { 
    this.workshoporderForm = new FormGroup({
       truckName: new FormControl(''),
-      author: new FormControl('John Deu'),
-      reporter: new FormControl('John Deu', [Validators.required, CustomValidators.nowhitespace] ),
+      author: new FormControl('Test User'),
+      reporter: new FormControl('Test User', [Validators.required, CustomValidators.nowhitespace] ),
       creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
       workshopOrderNumber: new FormControl(null),
       workshopOrderDescription: new FormControl(''),
