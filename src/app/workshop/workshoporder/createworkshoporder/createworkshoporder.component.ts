@@ -17,18 +17,13 @@ import { CustomValidators } from '../../../shared/directives/validator';
 })
 export class CreateworkshoporderComponent implements OnInit {
   workshoporderForm: any;
-  partyNo: Number;
-  serialNo: String;
-  paramObj: any;
-  display: boolean = false; 
+  paramObj: any; 
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
     private _confirmationService: ConfirmationService,
     private renderer: Renderer2,
-    private _router: Router) {
-    this.renderer.addClass(document.body, 'hidesidebar');
-  }
+    private _router: Router) {}
 
   ngOnInit() { 
    this.workshoporderForm = new FormGroup({
@@ -41,16 +36,14 @@ export class CreateworkshoporderComponent implements OnInit {
       outOfOrder: new FormControl(false)
     });
     this.setFormdata();
+    this.renderer.addClass(document.body, 'hidesidebar');
   }
-
 
   setFormdata() { 
     this._route.paramMap.pipe(
       switchMap(params => { 
-        this.workshoporderForm.patchValue({truckName:  params.get("truckname")})
-        this.serialNo = params.get("serialid");
-        this.partyNo = +params.get("partyid");
-        this.paramObj = { serialNumber: this.serialNo, shipToPartyNo: this.partyNo };
+        this.workshoporderForm.patchValue({truckName:  params.get("truckname")});
+        this.paramObj = { serialNumber:  params.get("serialid"), shipToPartyNo: +params.get("partyid")};
         return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
     ).subscribe(workOrderNumber => {this.workshoporderForm.patchValue({workshopOrderNumber: workOrderNumber}) })
