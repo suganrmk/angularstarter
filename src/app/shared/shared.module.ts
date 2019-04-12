@@ -5,10 +5,10 @@ import { FormsModule }   from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';   
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { RouterModule } from '@angular/router';
-
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
+import { ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -19,6 +19,7 @@ import {DialogModule} from 'primeng/dialog';
     CommonModule, 
     HttpClientModule,
     RouterModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   exports: [
@@ -26,9 +27,11 @@ import {DialogModule} from 'primeng/dialog';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
+    ReactiveFormsModule,
     TableModule, 
-    DialogModule
+    DialogModule, 
   ],
   providers:[]
 })
-export class SharedModule { }
+
+export class SharedModule {}
