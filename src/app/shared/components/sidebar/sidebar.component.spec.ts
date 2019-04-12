@@ -19,7 +19,7 @@ describe('SidebarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('200, Success', () => {
+  it('200, Component Loaded Sucessfully', () => {
     expect(component).toBeTruthy();
   });
 });

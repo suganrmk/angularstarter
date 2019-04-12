@@ -18,4 +18,8 @@ describe('LandingComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  // it('200, Component Loaded Sucessfully', () => {
+  //   expect(component).toBeTruthy();
+  // });
 });
