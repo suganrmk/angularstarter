@@ -7,7 +7,7 @@
       <div class="RightTruckDetail">
         <label class="truckname">{{workshoporderForm.controls.truckName.value}}</label>
         <ul class="TruckDetai">
-          <li><span>Serial No:</span><label><label>{{serialNo}}</label></label></li>
+          <li><span>Serial No:</span><label><label>{{paramObj.serialNo}}</label></label></li>
         </ul>
       </div>
     </div>
@@ -15,7 +15,6 @@
 </div>
 <div class="containerspace">
   <h3 class="orderTitle">Create Workshop order</h3>
-
   <form [formGroup]="workshoporderForm">
     <div class="workorderform">
       <div class="form-group">
@@ -36,7 +35,7 @@
       </div>
       <div class="form-group">
         <label>Workshop order description:</label>
-        <textarea id="workshopOrderDescription" formControlName="workshopOrderDescription"
+        <textarea id="workshopOrderDescription"  cols="60" rows="8" maxlength="2000" formControlName="workshopOrderDescription"
           placeholder="Please enter"></textarea>
       </div>
       <div class="form-group">

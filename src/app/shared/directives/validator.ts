@@ -7,7 +7,6 @@ const whitespaceRegex = /^\s+$/;
 export class CustomValidators extends Validators {
    
   static nowhitespace(control: FormControl) {
-     console.log(control.value);
     if (control.value && control.value.length > 0) { 
       const matches = control.value.match(whitespaceRegex); 
       return matches && matches.length ? { invalid_characters: matches } : null;
