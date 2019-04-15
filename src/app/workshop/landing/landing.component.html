@@ -1,22 +1,20 @@
-<workshop-header></workshop-header>
-
+<workshop-header></workshop-header> 
 <div class="maincontainer">
     <div class="sidebar">
         <workshop-sidebar></workshop-sidebar>
     </div>
     <div class="maincontent">
-        <router-outlet></router-outlet>
+        <router-outlet></router-outlet>  
 
         <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
                 <p-footer>
                     <div class="footer--modal">
-                        <a (click)="cd.accept()" ><i class="icon icon-right "></i>Continue</a>
+                        <a (click)="cd.accept()"><i class="icon icon-right"></i>Continue</a>
                     </div>
                 </p-footer>
-            </p-confirmDialog>
+        </p-confirmDialog>
     </div>
-</div>
-
+</div> 
 <!-- <workshop-footer></workshop-footer> -->
 
 

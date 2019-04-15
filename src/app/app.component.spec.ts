@@ -14,7 +14,7 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('200, Success', () => {
+  it('200, Component Successfully Loaded', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
