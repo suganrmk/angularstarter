@@ -37,7 +37,7 @@ describe('LandingComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('200, Component Loaded Sucessfully', () => {
+  it('200, Component Successfully Loaded', () => {
   expect(component).toBeTruthy();
   });
 });

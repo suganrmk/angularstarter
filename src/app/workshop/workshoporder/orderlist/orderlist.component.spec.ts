@@ -32,7 +32,7 @@ describe('OrderlistComponent', () => {
 
   });
 
-  it('200, Create Order Component Successfully Loaded', () => {
+  it('200, Component Successfully Loaded', () => {
     const fixture = TestBed.createComponent(OrderlistComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();

@@ -26,15 +26,39 @@ describe('CreateworkshoporderComponent', () => {
     component.ngOnInit();
   });
 
-  it('200, Create Order Component Successfully Loaded', () => {
+  it('200, Component Successfully Loaded', () => {
     const fixture = TestBed.createComponent(CreateworkshoporderComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
+  });
+  it('Form invalid when truckName is empty', () => {
+    component.workshoporderForm.patchValue({truckName: ''});
+    let truckName = component.workshoporderForm.controls['truckName']
+    expect(component.workshoporderForm.valid).toBeTruthy();
+  });
+  it('Form invalid when author is empty', () => {
+    component.workshoporderForm.patchValue({author: ''});
+    let author = component.workshoporderForm.controls['author']
+    expect(component.workshoporderForm.valid).toBeFalsy();
   });
   it('Form invalid when reporter is empty', () => {
     component.workshoporderForm.patchValue({reporter: ''});
     let reporter = component.workshoporderForm.controls['reporter']
     expect(component.workshoporderForm.valid).toBeFalsy();
+  });
+  it('Form invalid when workshopOrderNumber is empty', () => {
+    component.workshoporderForm.patchValue({reporter: ''});
+    let workshopOrderNumber = component.workshoporderForm.controls['workshopOrderNumber']
+    expect(component.workshoporderForm.valid).toBeFalsy();
+  });
+  it('Form valid when workshopOrderDescription is empty', () => {
+    component.workshoporderForm.patchValue({workshopOrderDescription: ''});
+    let workshopOrderDescription = component.workshoporderForm.controls['workshopOrderDescription']
+    expect(component.workshoporderForm.valid).toBeTruthy();
+  });
+  it('Form valid when outOfOrder is empty', () => {
+    let outOfOrder = component.workshoporderForm.controls['outOfOrder']
+    expect(component.workshoporderForm.valid).toBeTruthy();
   });
 
   it('Creation Date Field is expected to be todays date with format (dd.mm.yyyy)', () => {
