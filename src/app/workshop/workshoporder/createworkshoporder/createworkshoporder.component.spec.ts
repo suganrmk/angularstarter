@@ -37,17 +37,23 @@ describe('CreateworkshoporderComponent', () => {
     expect(component.workshoporderForm.valid).toBeFalsy();
   });
 
-  it('Form invalid when reporter is empty', () => {
-    var d = new Date("2015-03-25");     
-
-    var todayTime = new Date();
-    var month =  todayTime.getMonth() + 1;
-    var day =  todayTime.getDate();
-    var year = todayTime.getFullYear();
-    var formatdate =  day + "." + month + "." + year;
+  it('Creation Date Field is expected to be todays date with format (dd.mm.yyyy)', () => {
+ 
+    var todayTime = new Date(); 
+    function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+  
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+  
+      return [day, month, year].join('.');
+  }
 
     let creationDate = component.workshoporderForm.controls['creationDate']
-    expect(creationDate.value).toEqual(formatdate);
+    expect(creationDate.value).toEqual(formatDate(todayTime));
   });
 
 });
