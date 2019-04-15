@@ -8,13 +8,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./orderlist.component.scss']
 })
 export class OrderlistComponent implements OnInit {
-  trucklistdata: any[];  
+  trucklistdata: any[];
+  error: any;
 
   constructor(private _workshoporderService: WorkshoporderService) { }
 
 
   ngOnInit() {
-    this._workshoporderService.getAllTruck().subscribe(res => { this.trucklistdata = res });
+    this._workshoporderService.getAllTruck().subscribe(res => {
+      this.trucklistdata = res
+    }, (error) => {
+      this.error = error; 
+    });
+
   }
 
 

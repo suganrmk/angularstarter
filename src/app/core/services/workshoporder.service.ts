@@ -9,7 +9,8 @@ import { IworkorderList } from '../../core/models/workshop';
 import { headerID } from '../enums/header';
 const headers = new HttpHeaders({
   'IV-USER': headerID.IV_USER,
-  'ecid': headerID.ECID
+  'ecid': headerID.ECID,
+  'Content-Type': 'application/json'
 });
 
 @Injectable()
