@@ -1,0 +1,140 @@
+@import "../../../../assets/styles/abstracts/variable";
+@import "../../../../assets/styles/abstracts/mixins";
+
+.editworkshop--container {
+  display: flex;
+  height: 100%;
+}
+
+.waiting,
+.inprogress {
+  flex: 1;
+  height: 100%;
+  .editworkshop--header {
+    padding: 25px 15px 10px 15px;
+    border-bottom: 1px solid $border;
+
+    .headline {
+      font-weight: 500;
+      font-size: 20px;
+      margin: 0 0 10px 0;
+    }
+    .subheadline {
+      color: $fontL;
+      font-size: 13px;
+    }
+  }
+}
+
+.waiting {
+  border-right: 1px solid $border;
+}
+
+.editworkshop--body {
+  .table {
+    thead th {
+      border-top: none;
+      font-size: 13px;
+      color: $fontL;
+      .tablefiltericon {
+        float: right;
+      }
+    }
+  }
+}
+
+.editworkshop--content {
+  padding: 5px 20px 10px 35px;
+}
+
+.waitingList {
+  display: flex;
+  li {
+    flex: 1;
+    box-shadow: 0 0 2px 0px $border;
+    border: 1px solid $border;
+    min-height: 90px;
+    overflow: hidden;
+  }
+}
+
+.waitingList--left__skew {
+    width: 170px;
+  height: 100%;
+  display: flex;
+  -webkit-transform: skew(-35deg);
+  transform: skew(-35deg);
+  -webkit-transform-origin: left bottom;
+  transform-origin: left bottom;
+  border-right: 1px solid $border;
+  text-decoration: none;
+  background-color: #fff;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  float: left;
+  left: -70px;
+  position: relative;
+  text-align: left;
+  padding: 15px 0 0 50px;
+
+  > * {
+    -webkit-transform: skew(35deg);
+    transform: skew(35deg);
+  }
+
+  figure {
+    width: 35px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .truckName {
+    color: #000;
+    font-size: 13px;
+    width: 50px;
+    margin: 5px 0 0 16px;
+  }
+}
+
+.waitingList--right {
+  background: #fafafa;
+  height: 100%;
+  float: left;
+  width: calc(100% - 60px);
+  margin: 0 0 0 -110px;
+  padding: 0 0 0 73px;
+
+  .waitingList--right--top {
+    border-bottom: 1px solid $border;
+    padding: 13px 9px 13px 40px;
+    color: $fontL;
+    font-size: 13px;
+  }
+  span.orderNumber {
+    float: left;
+    margin: 0 30px 0 0;
+  }
+
+  span.priorityval {
+    float: right;
+    border: 1px solid $fontR;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+}
+
+.waitingList--right--bottom {
+  padding: 10px 15px;
+
+  span {
+    color: $fontL;
+    font-size: 13px;
+    > i {
+      color: $fontR;
+      font-size: 15px;
+      margin: 0 9px 0 0;
+    }
+  }
+}
