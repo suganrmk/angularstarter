@@ -23,8 +23,8 @@ export class CreateworkshoporderComponent implements OnInit {
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
     private _confirmationService: ConfirmationService,
-    private renderer: Renderer2,
-    private _router: Router) { }
+    private _renderer: Renderer2,
+    private _router: Router) {}
 
   ngOnInit() {
     this.workshoporderForm = new FormGroup({
@@ -38,7 +38,7 @@ export class CreateworkshoporderComponent implements OnInit {
     });
     
     this.setFormdata();
-    this.renderer.addClass(document.body, 'hidesidebar');
+    this._renderer.addClass(document.body, 'hidesidebar');
   }
 
   setFormdata() {
@@ -78,6 +78,6 @@ export class CreateworkshoporderComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.renderer.removeClass(document.body, 'hidesidebar');
+    this._renderer.removeClass(document.body, 'hidesidebar');
   }
 }
