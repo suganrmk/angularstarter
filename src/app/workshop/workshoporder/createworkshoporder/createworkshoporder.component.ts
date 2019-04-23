@@ -9,7 +9,6 @@ import { Iworkorder } from '../../../core/models/workshop'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../shared/directives/validator';
 
-
 @Component({
   selector: 'app-createworkshoporder',
   templateUrl: './createworkshoporder.component.html',
@@ -18,15 +17,22 @@ import { CustomValidators } from '../../../shared/directives/validator';
 export class CreateworkshoporderComponent implements OnInit {
   workshoporderForm: any;
   paramObj: any;
-  editOrderView: Boolean; 
+  editOrderView: Boolean;
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
     private _confirmationService: ConfirmationService,
     private _renderer: Renderer2,
-    private _router: Router) {}
+    private _router: Router) { }
 
   ngOnInit() {
+    this._route.url.subscribe(url =>
+      url[0].path === "editorder" ?  this.updateworkshoporderForm() : this.createworkshoporderForm()
+    );
+    this._renderer.addClass(document.body, 'hidesidebar');
+  }
+
+  setFormdata() {
     this.workshoporderForm = new FormGroup({
       truckName: new FormControl(''),
       author: new FormControl('Test User', [Validators.required]),
@@ -36,13 +42,10 @@ export class CreateworkshoporderComponent implements OnInit {
       workshopOrderDescription: new FormControl(''),
       outOfOrder: new FormControl(false)
     });
-    
-    this.setFormdata();
-    this._renderer.addClass(document.body, 'hidesidebar');
   }
 
-  setFormdata() {
-    this._route.url.subscribe(url =>  url[0].path === "editorder" ? (this.editOrderView = true, this.workshoporderForm.addControl('priority', new FormControl()) ) : this.editOrderView = false);
+  createworkshoporderForm() {
+    this.setFormdata();
     this._route.paramMap.pipe(
       switchMap(params => {
         this.workshoporderForm.patchValue({ truckName: params.get("truckname") });
@@ -51,6 +54,20 @@ export class CreateworkshoporderComponent implements OnInit {
       })
     ).subscribe(workOrderNumber => { this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber }) })
   }
+
+  updateworkshoporderForm() {
+    this.editOrderView = true;
+    // this.workshoporderForm.addControl('priority', new FormControl());
+    // this._route.paramMap.pipe(
+    //   switchMap(params => {
+    //     this.workshoporderForm.patchValue({ truckName: params.get("truckname") });
+    //     this.paramObj = { serialNumber: params.get("serialid"), shipToPartyNo: +params.get("partyid") };
+    //     return this._workshoporderService.getWorkordernumber(this.paramObj);
+    //   })
+    // ).subscribe(workOrderNumber => { this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber }) })
+  
+  }
+
 
   submitform() {
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj).subscribe(res => {
@@ -63,19 +80,7 @@ export class CreateworkshoporderComponent implements OnInit {
         });
       }
     });
-  }
-  updateform() {
-    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj).subscribe(res => {
-      if (res) {
-        this._confirmationService.confirm({
-          message: 'Work Order is Successfully updated',
-          accept: () => {
-            this._router.navigate(['/trucklist']);
-          }
-        });
-      }
-    });
-  }
+  } 
 
   ngOnDestroy() {
     this._renderer.removeClass(document.body, 'hidesidebar');
