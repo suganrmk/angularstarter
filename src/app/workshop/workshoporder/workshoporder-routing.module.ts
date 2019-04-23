@@ -11,6 +11,7 @@ const routes: Routes = [
      children: [
       { path: '', component: OrderlistComponent }, 
       { path: 'createorder/:truckname/:serialid/:partyid', component: CreateworkshoporderComponent },
+      { path: 'createorder/:truckname/:serialid/:partyid/:btnid', component: CreateworkshoporderComponent },
       { path: 'trucklist' , component: OrderlistComponent }
     ]
   }

@@ -18,6 +18,7 @@ import { CustomValidators } from '../../../shared/directives/validator';
 export class CreateworkshoporderComponent implements OnInit {
   workshoporderForm: any;
   paramObj: any; 
+  btname : any;
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
@@ -44,6 +45,7 @@ export class CreateworkshoporderComponent implements OnInit {
       switchMap(params => { 
         this.workshoporderForm.patchValue({truckName:  params.get("truckname")});
         this.paramObj = { serialNumber:  params.get("serialid"), shipToPartyNo: +params.get("partyid")};
+        this.btname = params.get("btnid");
         return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
     ).subscribe(workOrderNumber => {this.workshoporderForm.patchValue({workshopOrderNumber: workOrderNumber}) })
@@ -54,6 +56,18 @@ export class CreateworkshoporderComponent implements OnInit {
       if (res) {
         this._confirmationService.confirm({
           message: 'Work Order is Successfully created',
+          accept: () => {
+            this._router.navigate(['/trucklist']);
+          }
+        });
+      }
+    });
+  }
+  updateform(){ 
+    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj).subscribe(res => {
+      if (res) {
+        this._confirmationService.confirm({
+          message: 'Work Order is Successfully updated',
           accept: () => {
             this._router.navigate(['/trucklist']);
           }
