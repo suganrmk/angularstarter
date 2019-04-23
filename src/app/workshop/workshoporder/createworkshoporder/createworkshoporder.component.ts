@@ -18,6 +18,7 @@ export class CreateworkshoporderComponent implements OnInit {
   workshoporderForm: any;
   paramObj: any;
   editOrderView: Boolean;
+  truckName: String;
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
@@ -26,51 +27,56 @@ export class CreateworkshoporderComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
+    this._route.paramMap.subscribe(params => {
+      this.paramObj = { serialNumber: params.get("serialid"), shipToPartyNo: +params.get("partyid") };
+      this.truckName = params.get("truckname");
+    });
     this._route.url.subscribe(url =>
-      url[0].path === "editorder" ?  this.updateworkshoporderForm() : this.createworkshoporderForm()
+      url[0].path === "editorder" ? this.updateworkshoporderForm() : this.createworkshoporderForm()
     );
     this._renderer.addClass(document.body, 'hidesidebar');
   }
 
+
+  createworkshoporderForm() {
+    this.setFormdata();
+    this._workshoporderService.getWorkordernumber(this.paramObj).subscribe(workOrderNumber => {
+      this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber })
+    });
+  }
+
+  updateworkshoporderForm() {
+    this.editOrderView = true; 
+    this._workshoporderService.getworkshoporderdetails().subscribe(formdata => {
+      this.workshoporderForm = new FormGroup({
+        truckName: new FormControl(this.truckName),
+        author: new FormControl(formdata.author, [Validators.required]),
+        reporter: new FormControl(formdata.reporter, [Validators.required, CustomValidators.nowhitespace]),
+        creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
+        workshopOrderNumber: new FormControl(formdata.workshopOrderNumber),
+        workshopOrderDescription: new FormControl(formdata.workshopOrderDescription),
+        workStatus: new FormControl(formdata.workStatus),
+        outOfOrder: new FormControl(formdata.outOfOrder),
+        priority: new FormControl(formdata.priority),
+      });
+    })
+  }
   setFormdata() {
     this.workshoporderForm = new FormGroup({
-      truckName: new FormControl(''),
+      truckName: new FormControl(this.truckName),
       author: new FormControl('Test User', [Validators.required]),
       reporter: new FormControl('Test User', [Validators.required, CustomValidators.nowhitespace]),
       creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
       workshopOrderNumber: new FormControl(null),
       workshopOrderDescription: new FormControl(''),
+      workStatus: new FormControl('waiting'),
       outOfOrder: new FormControl(false)
     });
   }
 
-  createworkshoporderForm() {
-    this.setFormdata();
-    this._route.paramMap.pipe(
-      switchMap(params => {
-        this.workshoporderForm.patchValue({ truckName: params.get("truckname") });
-        this.paramObj = { serialNumber: params.get("serialid"), shipToPartyNo: +params.get("partyid") };
-        return this._workshoporderService.getWorkordernumber(this.paramObj);
-      })
-    ).subscribe(workOrderNumber => { this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber }) })
-  }
 
-  updateworkshoporderForm() {
-    this.editOrderView = true;
-    // this.workshoporderForm.addControl('priority', new FormControl());
-    // this._route.paramMap.pipe(
-    //   switchMap(params => {
-    //     this.workshoporderForm.patchValue({ truckName: params.get("truckname") });
-    //     this.paramObj = { serialNumber: params.get("serialid"), shipToPartyNo: +params.get("partyid") };
-    //     return this._workshoporderService.getWorkordernumber(this.paramObj);
-    //   })
-    // ).subscribe(workOrderNumber => { this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber }) })
-  
-  }
-
-
-  submitform() {
-    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj).subscribe(res => {
+  submitform(editOrderView) {
+    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrderView).subscribe(res => {
       if (res) {
         this._confirmationService.confirm({
           message: 'Work Order is Successfully created',
@@ -80,7 +86,7 @@ export class CreateworkshoporderComponent implements OnInit {
         });
       }
     });
-  } 
+  }
 
   ngOnDestroy() {
     this._renderer.removeClass(document.body, 'hidesidebar');
