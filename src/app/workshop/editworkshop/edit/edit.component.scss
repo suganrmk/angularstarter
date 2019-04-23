@@ -3,13 +3,13 @@
 
 .editworkshop--container {
   display: flex;
-  height: 100%;
+  min-height: 100%;
 }
 
 .waiting,
 .inprogress {
   flex: 1;
-  height: 100%;
+  min-height: 100%;
   .editworkshop--header {
     padding: 25px 15px 10px 15px;
     border-bottom: 1px solid $border;
@@ -44,7 +44,7 @@
 }
 
 .editworkshop--content {
-  padding: 5px 20px 10px 35px;
+  // padding: 5px 20px 10px 35px;
 }
 
 .waitingList {
@@ -52,11 +52,22 @@
   flex-flow: row-reverse wrap;
   li {
     flex: 0 0 100%;
-    box-shadow: 0 0 2px 0px $border;
-    border: 1px solid $border;
-    min-height: 90px;
-    overflow: hidden;
-    margin-bottom: 10px;
+    margin: 0px 0;
+    padding: 5px 10px 5px 25px;
+    flex-flow: row-reverse wrap;
+    display: flex;
+    &:hover{
+      background: #fff7f3;
+    }
+
+    .waitingList--container{
+      box-shadow: 0 0 2px 0px $border;
+      border: 1px solid $border;
+      min-height: 90px;
+      overflow: hidden;
+      flex: 0 0 100%;
+      background: #fff;
+    }
   }
 }
 

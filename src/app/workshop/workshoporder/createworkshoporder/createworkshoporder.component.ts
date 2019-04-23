@@ -17,43 +17,42 @@ import { CustomValidators } from '../../../shared/directives/validator';
 })
 export class CreateworkshoporderComponent implements OnInit {
   workshoporderForm: any;
-  paramObj: any; 
-  btname: any;
+  paramObj: any;
+  editOrderView: Boolean; 
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
     private _confirmationService: ConfirmationService,
     private renderer: Renderer2,
-    private _router: Router) {}
+    private _router: Router) { }
 
-  ngOnInit() { 
-   this.workshoporderForm = new FormGroup({
+  ngOnInit() {
+    this.workshoporderForm = new FormGroup({
       truckName: new FormControl(''),
-      author: new FormControl('Test User' , [Validators.required]),
-      reporter: new FormControl('Test User', [Validators.required, CustomValidators.nowhitespace] ),
+      author: new FormControl('Test User', [Validators.required]),
+      reporter: new FormControl('Test User', [Validators.required, CustomValidators.nowhitespace]),
       creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
       workshopOrderNumber: new FormControl(null),
       workshopOrderDescription: new FormControl(''),
       outOfOrder: new FormControl(false)
     });
+    
     this.setFormdata();
     this.renderer.addClass(document.body, 'hidesidebar');
   }
 
-  setFormdata() { 
-   
+  setFormdata() {
+    this._route.url.subscribe(url =>  url[0].path === "editorder" ? (this.editOrderView = true, this.workshoporderForm.addControl('priority', new FormControl()) ) : this.editOrderView = false);
     this._route.paramMap.pipe(
-      switchMap(params => { 
-        this.workshoporderForm.patchValue({truckName:  params.get("truckname")});
-        this.paramObj = { serialNumber:  params.get("serialid"), shipToPartyNo: +params.get("partyid")};
-        this.btname = params.get('editorder');
-        console.log("button name is :"+this.btname)
+      switchMap(params => {
+        this.workshoporderForm.patchValue({ truckName: params.get("truckname") });
+        this.paramObj = { serialNumber: params.get("serialid"), shipToPartyNo: +params.get("partyid") };
         return this._workshoporderService.getWorkordernumber(this.paramObj);
       })
-    ).subscribe(workOrderNumber => {this.workshoporderForm.patchValue({workshopOrderNumber: workOrderNumber}) })
+    ).subscribe(workOrderNumber => { this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber }) })
   }
 
-  submitform(){ 
+  submitform() {
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj).subscribe(res => {
       if (res) {
         this._confirmationService.confirm({
@@ -65,7 +64,7 @@ export class CreateworkshoporderComponent implements OnInit {
       }
     });
   }
-  updateform(){ 
+  updateform() {
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj).subscribe(res => {
       if (res) {
         this._confirmationService.confirm({

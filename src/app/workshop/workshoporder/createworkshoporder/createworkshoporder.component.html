@@ -14,8 +14,7 @@
   </div>
 </div>
 <div class="containerspace">
-  <h3 class="orderTitle" *ngIf="!btname">Create Workshop order</h3>
-  <h4 class="orderTitle" *ngIf="btname == 'editorder'">Edit Workshop order</h4>
+  <h3 class="orderTitle"> {{ editOrderView ? "Create"  : "Edit"}} Workshop order</h3>
   <form [formGroup]="workshoporderForm">
     <div class="workorderform">
       <div class="form-group">
@@ -34,11 +33,11 @@
         <label>Number:</label>
         <span>{{workshoporderForm.controls.workshopOrderNumber.value}}</span>
       </div>
-      <div class="form-group" *ngIf="btname == 'editorder'">
+      <div class="form-group" *ngIf="editOrderView">
         <label>Priority:</label>
-        <input id="priority" formControlName="priority" placeholder="3" type="radio" />
-        <input id="priority" formControlName="priority" placeholder="2" type="radio" />
-        <input id="priority" formControlName="priority" placeholder="1" type="radio" />
+        <input id="3" value="3" formControlName="priority" type="radio" />
+        <input id="2" value="2" formControlName="priority" type="radio" />
+        <input id="1" value="1" formControlName="priority" type="radio" />
       </div>
       <div class="form-group">
         <label>Workshop order description:</label>
@@ -49,11 +48,11 @@
         <label>Out of order:</label>
         <input id="name" formControlName="outOfOrder" name="outOfOrder" type="checkbox">
       </div>
-      <div class="form-group buttonholder" *ngIf="!btname">
+      <div class="form-group buttonholder" *ngIf="!editOrderView">
         <button [disabled]="!workshoporderForm.valid" (click)="submitform()" class="btn tmeBtn">Create</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Cancel</button>
       </div>
-      <div class="form-group buttonholder" *ngIf="btname == 'Open'">
+      <div class="form-group buttonholder" *ngIf="editOrderView">
         <button [disabled]="!workshoporderForm.valid" (click)="updateform()" class="btn tmeBtn">Save Changes</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Discard Changes</button>
       </div>
