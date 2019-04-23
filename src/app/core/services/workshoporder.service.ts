@@ -33,9 +33,11 @@ export class WorkshoporderService {
   }
 
 
-  createorder(data, params): Observable<[string]> {
+  createorder(data, params, orderstatus): Observable<[string]> {
+    let orderapi;
+    orderstatus ? orderapi = api.createorder : orderapi = api.editorder;
     const options = { headers, params }; 
-    return this.apiService.post(api.createorder, data, options)
+    return this.apiService.post(orderapi, data, options)
       .pipe(map(data => data));
   }
 }

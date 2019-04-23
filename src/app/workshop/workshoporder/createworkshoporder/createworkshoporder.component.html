@@ -57,11 +57,11 @@
         <input id="name" formControlName="outOfOrder" name="outOfOrder" type="checkbox">
       </div>
       <div class="form-group buttonholder" *ngIf="!editOrderView">
-        <button [disabled]="!workshoporderForm.valid" (click)="submitform()" class="btn tmeBtn">Create</button>
+        <button [disabled]="!workshoporderForm.valid" (click)="submitform(editOrderView)" class="btn tmeBtn">Create</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Cancel</button>
       </div>
       <div class="form-group buttonholder" *ngIf="editOrderView">
-        <button [disabled]="!workshoporderForm.valid" (click)="updateform()" class="btn tmeBtn">Save Changes</button>
+        <button [disabled]="!workshoporderForm.valid" (click)="submitform(editOrderView)" class="btn tmeBtn">Save Changes</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Discard Changes</button>
       </div>
     </div>
