@@ -14,28 +14,9 @@ const headers = new HttpHeaders({
 });
 
 @Injectable()
-export class WorkshoporderService {
+export class EditworkshoporderService {
 
   constructor(  private apiService: ApiService, private http: HttpClient) {}
 
-
-  getAllTruck(): Observable<[string]> {
-    const options = { headers: headers };
-    return this.apiService.post(api.getTrucks, null, options)
-      .pipe(map(data => data.trucks));
-  }
-
-
-  getWorkordernumber(params: HttpParams = new HttpParams()): Observable<[string]> {
-    const options = { headers, params };
-    return this.apiService.get(api.getWorkordernumber, options)
-      .pipe(map(data => data.workOrderNumber));
-  }
-
-
-  createorder(data, params): Observable<[string]> {
-    const options = { headers, params }; 
-    return this.apiService.post(api.createorder, data, options)
-      .pipe(map(data => data));
-  }
+  
 }
