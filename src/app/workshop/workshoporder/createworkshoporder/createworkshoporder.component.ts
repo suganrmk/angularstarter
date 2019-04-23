@@ -54,10 +54,12 @@ export class CreateworkshoporderComponent implements OnInit {
   }
 
   submitform(editOrder) {
+    let sucesstext;
+    editOrder ? sucesstext = 'updated': sucesstext = 'created'
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => {
       if (res) {
         this._confirmationService.confirm({
-          message: 'Work Order is Successfully created',
+          message: 'Work Order is Successfully '+sucesstext,
           accept: () => {
             this._router.navigate(['/trucklist']);
           }
