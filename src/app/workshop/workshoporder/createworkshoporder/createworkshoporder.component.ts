@@ -75,11 +75,13 @@ export class CreateworkshoporderComponent implements OnInit {
   }
 
 
-  submitform(editOrderView) {
-    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrderView).subscribe(res => {
+  submitform(editOrder) {
+    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => {
+      let sucesstext: string;
+      editOrder ? sucesstext = 'updated': sucesstext = 'created'
       if (res) {
         this._confirmationService.confirm({
-          message: 'Work Order is Successfully created',
+          message: 'Work Order is Successfully '+sucesstext,
           accept: () => {
             this._router.navigate(['/trucklist']);
           }

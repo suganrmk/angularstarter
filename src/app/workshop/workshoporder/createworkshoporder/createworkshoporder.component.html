@@ -14,8 +14,8 @@
   </div>
 </div>
 <div class="containerspace">
-  <h3 class="orderTitle"> {{ editOrderView ? "Create"  : "Edit"}} Workshop order</h3>
-  <form *ngIf="workshoporderForm" [formGroup]="workshoporderForm">
+  <h3 class="orderTitle"> {{ editOrderView ? "Edit"  : "Create"}} Workshop order</h3>
+  <form [formGroup]="workshoporderForm">
     <div class="workorderform">
      <div class="form-group">
         <label>Author:</label>
