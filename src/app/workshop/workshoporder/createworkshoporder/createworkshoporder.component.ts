@@ -19,6 +19,7 @@ export class CreateworkshoporderComponent implements OnInit {
   paramObj: any;
   editOrderView: Boolean;
   truckName: String;
+
   constructor(
     private _route: ActivatedRoute,
     private _workshoporderService: WorkshoporderService,
@@ -52,7 +53,7 @@ export class CreateworkshoporderComponent implements OnInit {
         truckName: new FormControl(this.truckName),
         author: new FormControl(formdata.author, [Validators.required]),
         reporter: new FormControl(formdata.reporter, [Validators.required, CustomValidators.nowhitespace]),
-        creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
+        creationDate: new FormControl(formatDate(new Date(formdata.createdDate), 'dd.MM.yyyy', 'en')),
         workshopOrderNumber: new FormControl(formdata.workshopOrderNumber),
         workshopOrderDescription: new FormControl(formdata.workshopOrderDescription),
         workStatus: new FormControl(formdata.workStatus),
@@ -76,12 +77,11 @@ export class CreateworkshoporderComponent implements OnInit {
 
 
   submitform(editOrder) {
-    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => {
-      let sucesstext: string;
-      editOrder ? sucesstext = 'updated': sucesstext = 'created'
+    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => { 
+      let sucesstext = editOrder ? 'updated':'created';
       if (res) {
         this._confirmationService.confirm({
-          message: 'Work Order is Successfully '+sucesstext,
+          message: 'Work Order is Successfully ${sucesstext}'+sucesstext,
           accept: () => {
             this._router.navigate(['/trucklist']);
           }
