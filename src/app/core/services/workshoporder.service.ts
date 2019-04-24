@@ -33,11 +33,18 @@ export class WorkshoporderService {
   }
 
 
-  createorder(data, params, orderstatus): Observable<[string]> {
-    let orderapi;
+  createorder(data, params, orderstatus:string): Observable<[string]> {
+    let orderapi:string;
     orderstatus ? orderapi = api.createorder : orderapi = api.editorder;
     const options = { headers, params }; 
     return this.apiService.post(orderapi, data, options)
+      .pipe(map(data => data));
+  }
+
+  getworkshoporderdetails(){
+    const params = {'lang': 'en'}
+    const options = { headers, params };
+    return this.apiService.get(api.getworkshoporderdetails, options)
       .pipe(map(data => data));
   }
 }

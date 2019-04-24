@@ -4,5 +4,6 @@ export const api = {
     getWorkordernumber: '/workshopservice/api/rest/generateworkshopordernumber?lang=en',
     createorder: '/workshopservice/api/rest/createworkshoporder?lang=en',
     editorder: '/workshopservice/api/rest/getworkshoporderdetails?lang=en',
+    getworkshoporderdetails: '/workshopservice/api/rest/getworkshoporderdetails/511903G00145',
 };
    

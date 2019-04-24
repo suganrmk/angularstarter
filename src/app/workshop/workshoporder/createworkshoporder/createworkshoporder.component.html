@@ -5,7 +5,7 @@
         <img src="assets/images/e_rx_60_35_m.png">
       </div>
       <div class="RightTruckDetail">
-        <label class="truckname">{{workshoporderForm.controls.truckName.value}}</label>
+        <label class="truckname">{{workshoporderForm?.controls.truckName.value}}</label>
         <ul class="TruckDetai">
           <li><span>Serial No:</span><label><label>{{paramObj.serialNumber}}</label></label></li>
         </ul>
@@ -15,13 +15,13 @@
 </div>
 <div class="containerspace">
   <h3 class="orderTitle"> {{ editOrderView ? "Edit"  : "Create"}} Workshop order</h3>
-  <form [formGroup]="workshoporderForm">
+  <form *ngIf="workshoporderForm" [formGroup]="workshoporderForm">
     <div class="workorderform">
-      <div class="form-group">
+     <div class="form-group">
         <label>Author:</label>
         <span>{{workshoporderForm.controls.author.value}}</span>
       </div>
-      <div class="form-group">
+       <div class="form-group">
         <label>Reporter:</label>
         <input id="reporter" formControlName="reporter" type="text" />
       </div>
