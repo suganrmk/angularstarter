@@ -83,4 +83,12 @@ export class CreateworkshoporderComponent implements OnInit {
   ngOnDestroy() {
     this._renderer.removeClass(document.body, 'hidesidebar');
   }
+  deleteform(){
+    this._confirmationService.confirm({
+      message: 'Please confirm if you want to dismiss this order',
+      accept: () => {
+        this._router.navigate(['/trucklist']);
+      }
+    });
+  }
 }
