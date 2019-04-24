@@ -7,7 +7,7 @@ import { formatDate } from '@angular/common'
 import { Iworkorder } from '../../../core/models/workshop'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../shared/directives/validator';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-createworkshoporder',
   templateUrl: './createworkshoporder.component.html',
@@ -24,6 +24,7 @@ export class CreateworkshoporderComponent implements OnInit {
     private _workshoporderService: WorkshoporderService,
     private _confirmationService: ConfirmationService,
     private _renderer: Renderer2,
+    private _location: Location,
     private _router: Router) { }
 
   ngOnInit() {
@@ -37,6 +38,8 @@ export class CreateworkshoporderComponent implements OnInit {
     }
     );
     this._renderer.addClass(document.body, 'hidesidebar');
+
+    
   }
 
 
@@ -98,9 +101,7 @@ export class CreateworkshoporderComponent implements OnInit {
     });
   }
 
-  ngOnDestroy() {
-    this._renderer.removeClass(document.body, 'hidesidebar');
-  }
+  
   deleteform(){
     this._confirmationService.confirm({
       message: 'Please confirm if you want to dismiss this order',
@@ -108,5 +109,12 @@ export class CreateworkshoporderComponent implements OnInit {
         this._router.navigate(['/trucklist']);
       }
     });
+  }
+
+  discard(){
+    this._location.back();
+  }
+  ngOnDestroy() {
+    this._renderer.removeClass(document.body, 'hidesidebar');
   }
 }
