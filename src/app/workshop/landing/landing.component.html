@@ -9,7 +9,8 @@
         <p-confirmDialog #cd header="Reject  Workshop Order" icon="pi pi-exclamation-triangle">
                 <p-footer>
                     <div class="footer--modal">
-                        <a (click)="cd.accept()"><i class="icon icon-right"></i>Continue</a>
+                        <a (click)="cd.reject()"><i class="icon icon-trash"></i>Reject</a>
+                        <a (click)="cd.accept()"><i class="icon icon-delete"></i>Cancel</a>
                     </div>
                 </p-footer>
         </p-confirmDialog>

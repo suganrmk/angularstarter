@@ -85,10 +85,14 @@ export class CreateworkshoporderComponent implements OnInit {
       let sucesstext = editOrder ? 'updated':'created';
       if (res) {
         this._confirmationService.confirm({
-          message: 'Work Order is Successfully ${sucesstext}'+sucesstext,
+          message: 'Work Order is Successfully '+sucesstext,
           accept: () => {
             this._router.navigate(['/trucklist']);
+          },
+          reject: () => {
+            this._workshoporderService.deleteorder(this.workshoporderForm.value, this.paramObj)   
           }
+
         });
       }
     });
