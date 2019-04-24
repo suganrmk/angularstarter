@@ -24,7 +24,7 @@ export class EditworkshoporderService {
   getWaitingList() {
   const options = { headers: headers };
     const body = {
-    shipToPartyNo: "98765",
+    shipToPartyNo: "29804",
     sortingOrder: "ASC",
     workStatus: "WAITING"
   } 

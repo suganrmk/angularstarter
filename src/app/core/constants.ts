@@ -4,5 +4,6 @@ export const api = {
     createorder: '/workshopservice/api/rest/createworkshoporder?lang=en',
     updateorder: '/workshopservice/api/rest/updateworkshoporder?lang=en',
     getworkshoporderlists: '/workshopservice/api/rest/getworkshoporderlist?lang=en',
-    getworkshoporderdetails: '/workshopservice/api/rest/getworkshoporderdetails/', 
+    getworkshoporderdetails: '/workshopservice/api/rest/getworkshoporderdetails/',
+    deleteworkshoporder: '/workshopservice/api/rest/deleteworkshoporder/'  
 };
