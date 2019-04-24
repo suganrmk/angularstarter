@@ -5,5 +5,6 @@ export const api = {
     createorder: '/workshopservice/api/rest/createworkshoporder?lang=en',
     editorder: '/workshopservice/api/rest/getworkshoporderdetails?lang=en',
     getworkshoporderdetails: '/workshopservice/api/rest/getworkshoporderdetails/511903G00145',
+    deleteworkshoporder: '/workshopservice/api/rest/deleteworkshoporder/511903G00145',
 };
    
