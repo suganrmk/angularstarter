@@ -63,6 +63,7 @@
       <div class="form-group buttonholder" *ngIf="editOrderView">
         <button [disabled]="!workshoporderForm.valid" (click)="submitform(editOrderView)" class="btn tmeBtn">Save Changes</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Discard Changes</button>
+        <button type="button" class="btn del" (click)="deleteform()">Reject Workshop Order</button>
       </div>
     </div>
   </form>
