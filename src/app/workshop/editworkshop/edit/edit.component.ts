@@ -12,8 +12,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
       this._editworkshoporderService.getWaitingList().subscribe(data => { 
-        this.waitingWorkshopOrder = data;
-        console.log(this.waitingWorkshopOrder)
+        this.waitingWorkshopOrder = data; 
       })
   }
 

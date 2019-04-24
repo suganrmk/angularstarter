@@ -87,16 +87,7 @@ export class CreateworkshoporderComponent implements OnInit {
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => { 
       let sucesstext = editOrder ? 'updated':'created';
       if (res) {
-        this._confirmationService.confirm({
-          message: 'Work Order is Successfully '+sucesstext,
-          accept: () => {
-            this._router.navigate(['/trucklist']);
-          },
-          reject: () => {
-            this._workshoporderService.deleteorder(this.workshoporderForm.value, this.paramObj)   
-          }
-
-        });
+        this._router.navigate(['/trucklist']); 
       }
     });
   }
@@ -106,6 +97,9 @@ export class CreateworkshoporderComponent implements OnInit {
     this._confirmationService.confirm({
       message: 'Please confirm if you want to dismiss this order',
       accept: () => {
+        this._workshoporderService.deleteorder(this.paramObj.serialNumber) 
+      },
+      reject: () => {
         this._router.navigate(['/trucklist']);
       }
     });

@@ -41,9 +41,10 @@ export class WorkshoporderService {
   }
 
   
-  deleteorder(data, params): Observable<[string]> {
-    const options = { headers, params }; 
-    return this.apiService.delete(api.deleteworkshoporder, data)
+  deleteorder(serialNo: string): Observable<[string]> {
+    const params = {'lang': 'en'}
+    const options = { headers , params }; 
+    return this.apiService.delete(api.deleteworkshoporder + serialNo, options)
       .pipe(map(data => data));
   }
 
