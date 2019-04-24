@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { switchMap } from "rxjs/operators";
+import { ActivatedRoute } from "@angular/router"; 
 import { WorkshoporderService } from '../../../core/services/';
 import { ConfirmationService } from 'primeng/api';
 import { Router } from '@angular/router';
@@ -17,7 +16,7 @@ import { CustomValidators } from '../../../shared/directives/validator';
 export class CreateworkshoporderComponent implements OnInit {
   workshoporderForm: any;
   paramObj: any;
-  editOrderView: Boolean;
+  editOrderView: Boolean = false;
   truckName: String;
 
   constructor(
@@ -33,13 +32,16 @@ export class CreateworkshoporderComponent implements OnInit {
       this.truckName = params.get("truckname");
     });
     this._route.url.subscribe(url =>
-      url[0].path === "editorder" ? this.updateworkshoporderForm() : this.createworkshoporderForm()
+     { url[0].path === "editorder" ? this.updateworkshoporderForm() : this.createworkshoporderForm(); 
+     console.log(url[0].path);
+    }
     );
     this._renderer.addClass(document.body, 'hidesidebar');
   }
 
 
   createworkshoporderForm() {
+
     this.setFormdata();
     this._workshoporderService.getWorkordernumber(this.paramObj).subscribe(workOrderNumber => {
       this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber })
@@ -47,8 +49,10 @@ export class CreateworkshoporderComponent implements OnInit {
   }
 
   updateworkshoporderForm() {
+    console.log('in');
     this.editOrderView = true; 
-    this._workshoporderService.getworkshoporderdetails().subscribe(formdata => {
+    this._workshoporderService.getworkshoporderdetails(this.paramObj.serialNumber).subscribe(formdata => {
+      console.log(formdata.priority, typeof(formdata.priority))
       this.workshoporderForm = new FormGroup({
         truckName: new FormControl(this.truckName),
         author: new FormControl(formdata.author, [Validators.required]),
@@ -70,13 +74,13 @@ export class CreateworkshoporderComponent implements OnInit {
       creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
       workshopOrderNumber: new FormControl(null),
       workshopOrderDescription: new FormControl(''),
-      workStatus: new FormControl('waiting'),
+      workStatus: new FormControl('WAITING'),
       outOfOrder: new FormControl(false)
     });
   }
 
 
-  submitform(editOrder) {
+  submitform(editOrder) { 
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => { 
       let sucesstext = editOrder ? 'updated':'created';
       if (res) {

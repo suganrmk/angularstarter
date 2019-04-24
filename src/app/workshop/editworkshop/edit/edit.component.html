@@ -17,19 +17,20 @@
       </table>
       <div class="editworkshop--content">
         <ul class="waitingList">
-          <li>
-            <div class="waitingList--container">
+          
+          <li *ngFor="let order of waitingWorkshopOrder">
+            <div routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}" class="waitingList--container">
               <div class="waitingList--left__skew">
                 <figure>
                   <img src="assets/images/e_rx_60_35_m.png">
                 </figure>
-                <span class="truckName">GM 45 MX-X</span>
+                <span class="truckName">{{order.truckName}}</span>
               </div>
               <div class="waitingList--right">
                 <div class="waitingList--right--top">
-                  <span class="orderNumber">Order 0728</span>
-                  <span class="orderdate">08.04.2018</span>
-                  <span class="priorityval">1</span>
+                  <span class="orderNumber">Order {{order.workshopOrderNumber}}</span>
+                  <span class="orderdate">{{order.createdDate | date}}</span>
+                  <span class="priorityval">{{order.priority}}</span>
                 </div>
                 <div class="waitingList--right--bottom">
                   <span><i class="icon icon-disclosureright"></i>Controls</span>
@@ -38,48 +39,7 @@
             </div>
           </li>
 
-          <li>
-              <div class="waitingList--container">
-                <div class="waitingList--left__skew">
-                  <figure>
-                    <img src="assets/images/e_rx_60_35_m.png">
-                  </figure>
-                  <span class="truckName">GM 45 MX-X</span>
-                </div>
-                <div class="waitingList--right">
-                  <div class="waitingList--right--top">
-                    <span class="orderNumber">Order 0728</span>
-                    <span class="orderdate">08.04.2018</span>
-                    <span class="priorityval">1</span>
-                  </div>
-                  <div class="waitingList--right--bottom">
-                    <span><i class="icon icon-disclosureright"></i>Controls</span>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-                <div class="waitingList--container">
-                  <div class="waitingList--left__skew">
-                    <figure>
-                      <img src="assets/images/e_rx_60_35_m.png">
-                    </figure>
-                    <span class="truckName">GM 45 MX-X</span>
-                  </div>
-                  <div class="waitingList--right">
-                    <div class="waitingList--right--top">
-                      <span class="orderNumber">Order 0728</span>
-                      <span class="orderdate">08.04.2018</span>
-                      <span class="priorityval">1</span>
-                    </div>
-                    <div class="waitingList--right--bottom">
-                      <span><i class="icon icon-disclosureright"></i>Controls</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-
+          
         </ul>
       </div>
     </div>
