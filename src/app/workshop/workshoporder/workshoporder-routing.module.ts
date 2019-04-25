@@ -9,10 +9,10 @@ const routes: Routes = [
   {
     path: '', component: WorkshoporderComponent,
      children: [
-      { path: '', component: OrderlistComponent }, 
+      { path: '', redirectTo: '/trucklist', pathMatch: 'full'}, 
       { path: 'createorder/:truckname/:serialid/:partyid', component: CreateworkshoporderComponent },
       { path: 'editorder/:truckname/:serialid/:partyid', component: CreateworkshoporderComponent },
-      { path: 'trucklist' , component: OrderlistComponent }
+      { path: 'trucklist', component: OrderlistComponent }
     ]
   }
 ]; 

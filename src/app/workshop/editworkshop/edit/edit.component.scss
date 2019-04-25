@@ -22,6 +22,7 @@
     .subheadline {
       color: $fontL;
       font-size: 13px;
+      font-weight: 200;
     }
   }
 }
@@ -44,7 +45,7 @@
 }
 
 .editworkshop--content {
-  // padding: 5px 20px 10px 35px;
+  padding: 0 0 10px 0;
 }
 
 .waitingList {
