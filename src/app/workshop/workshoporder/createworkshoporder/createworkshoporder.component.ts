@@ -87,7 +87,7 @@ export class CreateworkshoporderComponent implements OnInit {
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => { 
       let sucesstext = editOrder ? 'updated':'created';
       if (res) {
-        this._router.navigate(['/trucklist']); 
+        this._location.back();
       }
     });
   }
@@ -97,10 +97,12 @@ export class CreateworkshoporderComponent implements OnInit {
     this._confirmationService.confirm({
       message: 'Please confirm if you want to dismiss this order',
       accept: () => {
-        this._workshoporderService.deleteorder(this.paramObj.serialNumber) 
+        this._workshoporderService.deleteorder(this.paramObj.serialNumber).subscribe(res => {
+          this._location.back();
+        })
       },
       reject: () => {
-        this._router.navigate(['/trucklist']);
+     
       }
     });
   }
