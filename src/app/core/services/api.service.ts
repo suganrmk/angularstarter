@@ -36,8 +36,6 @@ export class ApiService {
   }
 
   delete(path: string, options): Observable<any> {
-    console.log( environment.serverUrl + path ,options )
-
     return this.http.delete(
       `${environment.serverUrl}${path}` , options
     ).pipe(catchError(this.formatErrors));
