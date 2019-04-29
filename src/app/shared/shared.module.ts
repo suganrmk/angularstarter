@@ -9,6 +9,7 @@ import { TableModule } from 'primeng/table';
 import { RouterModule } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms'; 
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     TableModule, 
     DialogModule, 
+    ToastModule,
   ],
   providers:[]
 })
