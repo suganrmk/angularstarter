@@ -1,6 +1,6 @@
 {
-  "name": "angular-latest",
-  "version": "0.0.0",
+  "name": "Workshop",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
