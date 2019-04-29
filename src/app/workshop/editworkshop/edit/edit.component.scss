@@ -3,13 +3,14 @@
 
 .editworkshop--container {
   display: flex;
-  min-height: 100%;
+   height: 100%;
 }
 
 .waiting,
 .inprogress {
   flex: 1;
   min-height: 100%;
+  
   .editworkshop--header {
     padding: 25px 15px 10px 15px;
     border-bottom: 1px solid $border;
@@ -35,9 +36,14 @@
 
 .waiting {
   border-right: 1px solid $border;
+  display: flex;
+  flex-flow: column;
+  
 }
 
 .editworkshop--body {
+  height: 100%;
+  overflow: auto;
   .table {
     thead th {
       border-top: none;
@@ -52,11 +58,15 @@
 
 .editworkshop--content {
   padding: 0 0 10px 0;
+  height: calc(100% - 56px);
+  overflow: auto;
+  display: flex;
 }
 
 .waitingList {
-  display: flex;
-  flex-flow: row-reverse wrap;
+  // display: flex;
+  // flex-flow: row-reverse wrap;
+  width: 100%;
   li {
     flex: 0 0 100%;
     margin: 0px 0;
