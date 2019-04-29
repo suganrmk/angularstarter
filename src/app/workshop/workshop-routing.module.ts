@@ -6,7 +6,9 @@ const routes: Routes = [
   {
     path: '', component: LandingComponent,
      children: [
-      { path: '', loadChildren: './workshoporder/workshoporder.module#WorkshoporderModule' }, 
+      { path: '', loadChildren: './workshoporder/workshoporder.module#WorkshoporderModule' },
+      { path: 'edit', loadChildren: './editworkshop/editworkshop.module#EditworkshopModule' }, 
+
     ]
   }
 ]; 

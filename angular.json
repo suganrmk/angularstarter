@@ -28,7 +28,9 @@
             ],
             "styles": [
               "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/styles/main.scss"
+              
             ],
             "scripts": [],
             "es5BrowserSupport": true

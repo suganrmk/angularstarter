@@ -32,10 +32,26 @@ export class WorkshoporderService {
       .pipe(map(data => data.workOrderNumber));
   }
 
-
-  createorder(data, params): Observable<[string]> {
+ // create/update work order
+  createorder(data, params, orderstatus:string): Observable<[string]> { 
+    let orderapi = orderstatus ? api.updateorder : api.createorder; 
     const options = { headers, params }; 
-    return this.apiService.post(api.createorder, data, options)
+    return this.apiService.post(orderapi, data, options)
+      .pipe(map(data => data));
+  }
+
+  
+  deleteorder(serialNo: string): Observable<[string]> {
+    const params = {'lang': 'en'}
+    const options = { headers , params }; 
+    return this.apiService.delete(api.deleteworkshoporder + serialNo, options)
+      .pipe(map(data => data));
+  }
+
+  getworkshoporderdetails(serialNumber: string){
+    const params = {'lang': 'en'}
+    const options = { headers, params };
+    return this.apiService.get(api.getworkshoporderdetails + serialNumber, options)
       .pipe(map(data => data));
   }
 }

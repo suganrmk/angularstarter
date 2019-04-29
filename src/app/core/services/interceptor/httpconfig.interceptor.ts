@@ -6,11 +6,21 @@ import {
     HttpResponse,
     HttpHandler,
     HttpEvent,
-    HttpErrorResponse
+    HttpErrorResponse,
+    HttpHeaders
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators'; 
+
+import { headerID } from '../../enums/header';
+const headers = new HttpHeaders({
+  'IV-USER': headerID.IV_USER,
+  'ecid': headerID.ECID,
+  'Content-Type': 'application/json'
+});
+
+
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
@@ -37,6 +47,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 return event;
             }),
             catchError((error: HttpErrorResponse) => {
+                console.log(error)
                 let data = {};
                 data = {
                     reason: error && error.error.reason ? error.error.reason : '',

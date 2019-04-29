@@ -12,7 +12,7 @@
       <td>{{truck.serialNumber}}</td>
       <td>
         <div class="tablebtnHolder">
-          <button *ngIf="truck.openWorkshopOrder">Open Workshop Order</button>
+          <button *ngIf="truck.openWorkshopOrder" [routerLink]="['/editorder/',truck.truckName,truck.serialNumber, truck.shipToPartyNo]">Open Workshop Order</button>
           <button id="createorderBtn" *ngIf="!truck.openWorkshopOrder"
             [routerLink]="['/createorder/',truck.truckName,truck.serialNumber, truck.shipToPartyNo]">
             Create Workshop order
