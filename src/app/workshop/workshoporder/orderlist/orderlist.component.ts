@@ -11,7 +11,7 @@ export class OrderlistComponent implements OnInit {
   trucklistdata: any[];
   error: any;
 
-  constructor(private _workshoporderService: WorkshoporderService) { }
+  constructor(private _workshoporderService: WorkshoporderService ) { }
 
 
   ngOnInit() {
