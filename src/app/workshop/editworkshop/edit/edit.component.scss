@@ -1,6 +1,9 @@
 @import "../../../../assets/styles/abstracts/variable";
 @import "../../../../assets/styles/abstracts/mixins";
 
+// variable
+$slotheader: #fafafa;
+
 .editworkshop--container {
   display: flex;
   height: 100%;
@@ -34,8 +37,11 @@
   }
 }
 
+.waitingList--action--icon{
+  float: right;
+  color: $fontL;
+}
 .waiting {
-  border-right: 1px solid $border;
   display: flex;
   flex-flow: column;
 }
@@ -123,6 +129,7 @@
   .truckName {
     color: #000;
     font-size: 13px;
+    white-space: nowrap;
     margin: 5px 0 0 16px;
   }
 }
@@ -146,13 +153,12 @@
     margin: 0 30px 0 0;
     width: 150px;
   }
-
-  span.priorityval {
-    float: right;
-    border: 1px solid #969696;
-    padding: 1px 5px;
-    border-radius: 3px;
-  }
+}
+.priorityval {
+  float: right;
+  border: 1px solid #969696;
+  padding: 1px 5px;
+  border-radius: 3px;
 }
 
 .waitingList--right--bottom {
@@ -167,5 +173,168 @@
       font-size: 15px;
       margin: 0 9px 0 0;
     }
+  }
+}
+
+/*Inprogress*/
+
+.inprogress {
+  border-left: 1px solid $border;
+  .editworkshop--body,
+  .editworkshop--content {
+    // overflow: visible;
+  }
+  .editworkshop--content{
+    height: 100%;
+  }
+
+  .editworkshop--body { 
+    height: calc(100% - 83px);
+  }
+  .waitingList--left__skew {
+    left: 0;
+    padding: 12px 10px 10px 41px;
+    margin: 0 10px 0 -56px;
+    width: auto;
+  }
+}
+
+.inprogress--center {
+  line-height: 16px;
+  font-size: 12px;
+  color: $fontL;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 40px;
+}
+
+.inprogress--right {
+  float: right;
+  margin-left: auto;
+  padding: 22px 10px 0 0;
+  font-size: 12px;
+}
+.inprogressList {
+  display: inline-block;
+  width: 100%;
+  padding: 37px 15px;
+
+  > li {
+    float: left;
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+
+    &:nth-child(odd) {
+      margin-right: 20px;
+    }
+  }
+}
+
+slot {
+  display: flex;
+    min-height: 165px;
+}
+
+.assignslot--label {
+  text-align: center;
+  display: none;
+  color: $theme;
+  i{
+    width:100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
+
+.slot--name {
+  color: $fontLighter;
+  font-weight: 100;
+  font-size: 13px;
+  @include regular();
+  margin-bottom: 5px;
+  display: inline-block;
+  width: 100%;
+}
+
+.slot--container {
+  width: 100%;
+  border: 1px solid $border; 
+  box-shadow: 0 0 3px 0 $border;
+}
+.slot--free {
+  color: $fontLighter;
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: $bgLight;
+  box-shadow: none;
+
+}
+.slot--header {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  background: $slotheader;
+  border-bottom: 1px solid $border;
+  color: $fontL;
+}
+
+.slot-middle{
+  float: left;
+    width: 100%;
+    font-size: 13px;
+    color: $fontL;
+    padding: 10px 10px;
+}
+.slot-bottom{
+  float: left;
+    width: 100%;
+    font-size: 13px;
+    color: $fontL;
+    padding: 20px 10px 10px 10px;
+
+    i{
+      font-size: 17px;
+      float: left;
+      margin: 4px 0 0 0;
+  }
+}
+
+input.dateSelction {
+  margin: 0 0 0 10px;
+  padding: 4px 8px;
+  border: 1px solid $border;
+}
+label.cotrl {
+  margin: 6px 0 0 0;
+}
+
+.addon{
+  float: right;
+  li{
+    float: left;
+    padding: 4px 4px;
+    margin: 0 0 0 5px;
+    &.bordered{
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  }
+  }
+}
+
+.freeSlot__highlight{
+  .slot--free{
+    border-color: $theme;
+    cursor: pointer;
+  }
+  .freeslot--label{
+    display: none;
+  }
+  .assignslot--label{
+    display: block;
+
   }
 }

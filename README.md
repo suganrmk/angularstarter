@@ -37,3 +37,5 @@ https://github.com/ngx-rocket/starter-kit
 https://almerosteyn.com/2016/03/angular2-form-validation-component
 
 https://medium.com/@christo8989/angular-6-url-parameters-860db789db85
+
+https://alligator.io/angular/drag-drop/

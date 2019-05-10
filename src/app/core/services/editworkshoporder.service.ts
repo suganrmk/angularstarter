@@ -27,10 +27,27 @@ export class EditworkshoporderService {
     shipToPartyNo: "29804",
     sortingOrder: "ASC",
     workStatus: "WAITING"
-  } 
+  }  
   return this.apiService.post(api.getworkshoporderlists, body, options)
     .pipe(map(data => data));
   }
+
+  
+  getInprogressList() {
+    const options = { headers: headers };
+      const body = {
+      shipToPartyNo: "29804",
+      sortingOrder: "ASC",
+      workStatus: "INPROGRESS"
+    }  
+    return this.apiService.post(api.getworkshoporderlists, body, options)
+      .pipe(map(data => data));
+    }
+
+
+
+
+
 
   
 }

@@ -60,7 +60,7 @@ describe('OrderlistComponent', () => {
 
 
 
-  it('should set Truck data  with the items returned from the server', () => {
+  it('should set Truck data  with the items returned from the server', () => {  
     // Arrange - Setup
     const trucks = [
       {

@@ -2,7 +2,8 @@
   <div class="waiting">
     <div class="editworkshop--header">
       <h4 class="headline">Waiting</h4>
-      <span class="subheadline"><i class="icon icon-creditcard"></i> {{waitingWorkshopOrder?.length}} Workshop Orders Waiting</span>
+      <span class="subheadline"><i class="icon icon-creditcard"></i> {{waitingList?.length}} Workshop Orders
+        Waiting</span>
     </div>
     <div class="editworkshop--body">
       <table class="table">
@@ -16,10 +17,12 @@
           </th>
         </thead>
       </table>
-      <div class="editworkshop--content">
+      <div class="editworkshop--content"> 
         <ul class="waitingList">
-          <li *ngFor="let order of waitingWorkshopOrder">
-            <div routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}" class="waitingList--container">
+          <li *ngFor="let order of waitingList; index as i">
+            <!-- routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}" -->
+            <div 
+              class="waitingList--container">
               <div class="waitingList--left__skew">
                 <figure>
                   <img src="assets/images/e_rx_60_35_m.png">
@@ -34,16 +37,78 @@
                 </div>
                 <div class="waitingList--right--bottom">
                   <span><i class="icon icon-disclosureright"></i>Controls</span>
+                  <div class="waitingList--action--icon"> 
+                    <i (click)="selectOrder(i)" class="icon icon-right"></i>
+                    <i class="icon icon-key"></i>
+                  </div>
+
                 </div>
               </div>
             </div>
           </li>
-
-          
         </ul>
       </div>
     </div>
   </div>
-  <div class=" inprogress"></div>
+
+
+
+  <div class="inprogress">
+    <div class="editworkshop--header">
+      <h4 class="headline">In Progress</h4>
+      <span class="subheadline"><i class="icon icon-creditcard"></i> {{totalSlot - (existingSlots.length)}} of {{totalSlot}} slot Free</span>
+    </div>
+    <div class="editworkshop--body">
+
+      <div class="editworkshop--content">
+        <ul [class.freeSlot__highlight]="selectedOrder" class="inprogressList ">
+          <li *ngFor="let order of inprogressList index as i">
+            <span class="slot--name">Slot {{i + 1}}</span>
+            <slot>
+              <div *ngIf="!order.freeSlot" class="slot--container">
+                <div class="slot--header">
+                  <div class="waitingList--left__skew">
+                    <figure><img src="assets/images/e_rx_60_35_m.png"></figure>
+                    <span class="truckName">{{order.truckName}}</span>
+                  </div>
+                  <div class="inprogress--center">
+                    <span class="order--number">Order {{order.workshopOrderNumber}}</span>
+                    <span class="order--date">{{order.createdDate | date : 'dd.MM.yyyy'}}</span>
+                  </div>
+                  <div class="inprogress--right">
+                    <i class="icon icon-setting"></i>
+                    <span class="pirority--num priorityval">{{order.priority}}</span>
+                  </div>
+                </div>
+                <div class="slot--body">
+                  <div class="slot-middle">
+                    <label class="cotrl">Engine Unit</label>
+                    <ul class="addon">
+                      <li class="bordered">TM</li>
+                      <li class="bordered">PM</li>
+                      <li><i class="icon icon-add"></i></li>
+                    </ul>
+                  </div>
+                  <div class="slot-bottom">
+                    <i class="icon icon-clock"></i>
+                    <input class="dateSelction" placeholder="Add Est. Completion Date" type="text">
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="order.freeSlot" (click)="updateSlot(i)" class="slot--container slot--free">
+                <span class="freeslot--label"> Free Slot</span>
+                <span class="assignslot--label">
+                  <i class="icon icon-archive"></i>
+                  Assign Slot
+                </span>
+
+              </div>
+            </slot>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
 
 </div>
