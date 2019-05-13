@@ -17,12 +17,11 @@
           </th>
         </thead>
       </table>
-      <div class="editworkshop--content"> 
+      <div class="editworkshop--content">
         <ul class="waitingList">
-          <li *ngFor="let order of waitingList; index as i">
+          <li *ngFor="let order of waitingList; index as i;  trackBy: trackByFn">
             <!-- routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}" -->
-            <div 
-              class="waitingList--container">
+            <div class="waitingList--container">
               <div class="waitingList--left__skew">
                 <figure>
                   <img src="assets/images/e_rx_60_35_m.png">
@@ -37,8 +36,8 @@
                 </div>
                 <div class="waitingList--right--bottom">
                   <span><i class="icon icon-disclosureright"></i>Controls</span>
-                  <div class="waitingList--action--icon"> 
-                    <i (click)="selectOrder(i)" class="icon icon-right"></i>
+                  <div class="waitingList--action--icon">
+                    <i (click)="selectorder(i)" class="icon icon-right"></i>
                     <i class="icon icon-key"></i>
                   </div>
 
@@ -56,13 +55,14 @@
   <div class="inprogress">
     <div class="editworkshop--header">
       <h4 class="headline">In Progress</h4>
-      <span class="subheadline"><i class="icon icon-creditcard"></i> {{totalSlot - (existingSlots.length)}} of {{totalSlot}} slot Free</span>
+      <span class="subheadline"><i class="icon icon-creditcard"></i> {{totalSlot - (existingSlots.length)}} of
+        {{totalSlot}} slot Free</span>
     </div>
     <div class="editworkshop--body">
 
       <div class="editworkshop--content">
         <ul [class.freeSlot__highlight]="selectedOrder" class="inprogressList ">
-          <li *ngFor="let order of inprogressList index as i">
+          <li *ngFor="let order of inprogressList; index as i;  trackBy: trackByFn">
             <span class="slot--name">Slot {{i + 1}}</span>
             <slot>
               <div *ngIf="!order.freeSlot" class="slot--container">
@@ -101,7 +101,6 @@
                   <i class="icon icon-archive"></i>
                   Assign Slot
                 </span>
-
               </div>
             </slot>
           </li>

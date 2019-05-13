@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://10.233.37.175:8080',
+  serverUrl: 'http://10.233.14.174:8080',
 };
 
 /*
@@ -14,4 +14,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/dist/zone-error'; // Included with Angular CLI.

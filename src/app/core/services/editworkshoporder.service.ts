@@ -45,7 +45,17 @@ export class EditworkshoporderService {
     }
 
 
+    // create/update work order
+    updateWorkstatus(data , slotnumber: number): Observable<[string]> {  
+      let body = {
+        "assignedSlot":slotnumber,
+        "workStatus": "INPROGRESS"
+      }
+      let paramObj = { serialNumber: data.serialNumber, shipToPartyNo: data.shipToPartyNo };
+      const options = { headers, params: paramObj };       
 
+      return this.apiService.post( api.updateorder, body, options).pipe(map(data => data));
+    }
 
 
 
