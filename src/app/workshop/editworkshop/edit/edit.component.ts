@@ -17,6 +17,11 @@ export class EditComponent implements OnInit {
     private _workshoporderService: WorkshoporderService) { }
 
   ngOnInit() {
+    this.getData()
+  }
+
+
+  getData(){
     this._editworkshoporderService.getWaitingList().subscribe(data => {
       this.waitingList = data;
     })
@@ -25,7 +30,6 @@ export class EditComponent implements OnInit {
       this.setttingSlot(data);
     })
   }
-
   setttingSlot(data) {
 
     data.forEach(function (val, i) {
@@ -51,6 +55,7 @@ export class EditComponent implements OnInit {
     let body = this.waitingList[index];
     this._editworkshoporderService.updateWorkstatus(body, selectedSlot).subscribe(res => {
       this.selectedOrder = null;
+      this.getData();
     })
 
 
