@@ -1,3 +1,4 @@
+
 <div class="editworkshop--container">
   <div class="waiting">
     <div class="editworkshop--header">
@@ -36,8 +37,8 @@
                 </div>
                 <div class="waitingList--right--bottom">
                   <span><i class="icon icon-disclosureright"></i>Controls</span>
-                  <div class="waitingList--action--icon">
-                    <i (click)="selectorder(i)" class="icon icon-right"></i>
+                  <div class="waitingList--action--icon"> 
+                    <i (click)="selectorder(i)" class="icon icon-redo"></i>
                     <i class="icon icon-key"></i>
                   </div>
 
@@ -61,11 +62,11 @@
     <div class="editworkshop--body">
 
       <div class="editworkshop--content">
-        <ul [class.freeSlot__highlight]="selectedOrder" class="inprogressList ">
-          <li *ngFor="let order of inprogressList; index as i;  trackBy: trackByFn">
+        <ul [class.freeSlot__highlight]="selectedOrder !== null" class="inprogressList ">
+          <li   *ngFor="let order of inprogressList; index as i;  trackBy: trackByFn">
             <span class="slot--name">Slot {{i + 1}}</span>
-            <slot>
-              <div *ngIf="!order.freeSlot" class="slot--container">
+            <slot >
+              <div *ngIf="!order.freeSlot"  class="slot--container">
                 <div class="slot--header">
                   <div class="waitingList--left__skew">
                     <figure><img src="assets/images/e_rx_60_35_m.png"></figure>

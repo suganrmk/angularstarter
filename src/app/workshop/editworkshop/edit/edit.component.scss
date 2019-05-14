@@ -40,6 +40,9 @@ $slotheader: #fafafa;
 .waitingList--action--icon{
   float: right;
   color: $fontL;
+  i{
+    margin: 0 5px 0 0;
+  }
 }
 .waiting {
   display: flex;
