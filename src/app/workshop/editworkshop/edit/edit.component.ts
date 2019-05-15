@@ -13,6 +13,7 @@ export class EditComponent implements OnInit {
   selectedOrder: any = null;
   totalSlot: number = 6;
   
+
   constructor( private _editworkshoporderService: EditworkshoporderService) { }
 
   ngOnInit() {
@@ -51,6 +52,7 @@ export class EditComponent implements OnInit {
       this._editworkshoporderService.updateWorkstatus(body, selectedSlot).subscribe(res => {
         this.inprogressList[inprogressindex] = this.waitingList[this.selectedOrder];
         this.waitingList.splice(this.selectedOrder, 1);
+        this.existingSlots.push(selectedSlot)
         this.selectedOrder = null;
       })
     }
