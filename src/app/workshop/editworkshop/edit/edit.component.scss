@@ -40,6 +40,9 @@ $slotheader: #fafafa;
 .waitingList--action--icon{
   float: right;
   color: $fontL;
+  i{
+    margin: 0 0px 0 5px;
+  }
 }
 .waiting {
   display: flex;
@@ -206,7 +209,7 @@ $slotheader: #fafafa;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 30px;
 }
 
 .inprogress--right {
@@ -214,6 +217,10 @@ $slotheader: #fafafa;
   margin-left: auto;
   padding: 22px 10px 0 0;
   font-size: 12px;
+  > i{
+    margin: 2px 5px 0 0;
+    font-size: 13px;
+  }
 }
 .inprogressList {
   display: inline-block;
@@ -260,7 +267,7 @@ slot {
 .slot--container {
   width: 100%;
   border: 1px solid $border; 
-  box-shadow: 0 0 3px 0 $border;
+  box-shadow: 0 0 4px 2px $border;
 }
 .slot--free {
   color: $fontLighter;

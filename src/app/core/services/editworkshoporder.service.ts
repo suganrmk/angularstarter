@@ -51,6 +51,7 @@ export class EditworkshoporderService {
         "assignedSlot":slotnumber,
         "workStatus": "INPROGRESS"
       }
+      console.log(data , data.serialNumber)
       let paramObj = { serialNumber: data.serialNumber, shipToPartyNo: data.shipToPartyNo };
       const options = { headers, params: paramObj };       
 

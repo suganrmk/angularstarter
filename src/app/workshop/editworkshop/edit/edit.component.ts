@@ -10,18 +10,13 @@ export class EditComponent implements OnInit {
   waitingList: any[];
   inprogressList: any[] = [];
   existingSlots: any[] = [];
-  selectedOrder: any;
+  selectedOrder: any = null;
   totalSlot: number = 6;
-  constructor(
-    private _editworkshoporderService: EditworkshoporderService,
-    private _workshoporderService: WorkshoporderService) { }
+  
+
+  constructor( private _editworkshoporderService: EditworkshoporderService) { }
 
   ngOnInit() {
-    this.getData()
-  }
-
-
-  getData(){
     this._editworkshoporderService.getWaitingList().subscribe(data => {
       this.waitingList = data;
     })
@@ -30,34 +25,37 @@ export class EditComponent implements OnInit {
       this.setttingSlot(data);
     })
   }
-  setttingSlot(data) {
 
+  setttingSlot(data) {
     data.forEach(function (val, i) {
       this.existingSlots.push(parseInt(val['assignedSlot']));
     }, this);
+
     Array(this.totalSlot).fill(null).forEach((_, i) => {
       let freeSlot = {
         "assignedSlot": i + 1,
         "freeSlot": true
       }
-      this.existingSlots.indexOf(i+ 1) < i ? this.inprogressList.push(freeSlot) : this.inprogressList.push(data[this.existingSlots.indexOf((i+1))]);
-    });
+      this.existingSlots.indexOf(i + 1) < 0 ? this.inprogressList.push(freeSlot) : this.inprogressList.push(data[this.existingSlots.indexOf((i + 1))]);
+    }); 
   }
 
-
-
-  selectorder(index) { 
-    this.selectedOrder = index + 1;
+  selectorder(waitingindex) {
+    this.selectedOrder = waitingindex;
   }
 
-  updateSlot(index) {  
-    let selectedSlot = index + 1;
-    let body = this.waitingList[index];
-    this._editworkshoporderService.updateWorkstatus(body, selectedSlot).subscribe(res => {
-      this.selectedOrder = null;
-      this.getData();
-    })
+  updateSlot(inprogressindex) {
+    if (this.selectedOrder !== null) {
+      let selectedSlot = inprogressindex + 1;
+      let body = this.waitingList[this.selectedOrder];
 
+      this._editworkshoporderService.updateWorkstatus(body, selectedSlot).subscribe(res => {
+        this.inprogressList[inprogressindex] = this.waitingList[this.selectedOrder];
+        this.waitingList.splice(this.selectedOrder, 1);
+        this.existingSlots.push(selectedSlot)
+        this.selectedOrder = null;
+      })
+    }
 
   }
 
