@@ -40,7 +40,7 @@ export class EditComponent implements OnInit {
         "assignedSlot": i + 1,
         "freeSlot": true
       }
-      this.existingSlots.indexOf(i + 1) < 0 ? this.inprogressList.push(freeSlot) : this.inprogressList.push(data[this.existingSlots.indexOf((i + 1))]);
+      this.existingSlots.indexOf(i+ 1) < i ? this.inprogressList.push(freeSlot) : this.inprogressList.push(data[this.existingSlots.indexOf((i+1))]);
     });
   }
 
