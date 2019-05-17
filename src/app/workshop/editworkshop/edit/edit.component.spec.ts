@@ -39,7 +39,7 @@ describe('EditComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create edit', () => {
+  it('200, Component Loaded Sucessfully', () => {
     expect(component).toBeTruthy();
   });
 
@@ -73,49 +73,8 @@ describe('EditComponent', () => {
     });
 
     // component.ngOnInit();
-    // expect(component.waitingWorkshopOrder).toEqual(waitingtrucks);
-    // expect(component.waitingWorkshopOrder.length).toEqual(1);
+    // expect(component.waitingList).toEqual(waitingtrucks);
+    // expect(component.waitingList.length).toEqual(1);
   });
-
-//   const testRoutes: Routes = [
-//     {
-//           path: '',
-//           component: EditComponent
-//         }
-//       ]
-
-
-//   // test module configuration for each test
-// const testModuleConfig = () => {
-//   // reset the test environment before initializing it.
-//   TestBed.resetTestEnvironment();
-//   TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting())
-//     .configureTestingModule({
-//       imports: [
-//         EditworkshopModule,
-//         RouterTestingModule.withRoutes(testRoutes),
-//       ],
-//       providers: [ApiService, WorkshoporderService]
-//     });
-// };
-
-// describe('Some service',
-//   () => {
-//     beforeEach(() => {
-//     testModuleConfig();
-//   });
-//   it('should be able to navigate to `/`',
-//   (() => {
-//       const injector = getTestBed();
-//       const router = injector.get(Router);
-//       const fixture = TestBed.createComponent(EditComponent);
-//  fixture.detectChanges();
-//       // initial navigation
-//       router.navigate([''])
-//         .then(() => {
-//           expect(router.url).toEqual('/');
-//         });
-//       }));
-// });
 
 });

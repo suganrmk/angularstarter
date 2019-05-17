@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArchiveComponent } from './archive.component';
 
-describe('ArchiveComponent', () => {
+describe('200, Component loaded successfully', () => {
   let component: ArchiveComponent;
   let fixture: ComponentFixture<ArchiveComponent>;
 

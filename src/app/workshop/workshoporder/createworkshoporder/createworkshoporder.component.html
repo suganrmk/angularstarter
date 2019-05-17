@@ -29,8 +29,8 @@
         <label>Creation Date:</label>
         <span>{{workshoporderForm.controls.creationDate.value}}</span>
       </div>
-      <div class="form-group">
-        <label>Number:</label>
+      <div class="form-group" *ngIf="editOrderView">
+        <label >Number:</label>
         <span>{{workshoporderForm.controls.workshopOrderNumber.value}}</span>
       </div>
       <div class="form-group" *ngIf="editOrderView">

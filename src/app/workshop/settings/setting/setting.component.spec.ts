@@ -19,7 +19,7 @@ describe('SettingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('200, component loaded successfully', () => {
     expect(component).toBeTruthy();
   });
 });
