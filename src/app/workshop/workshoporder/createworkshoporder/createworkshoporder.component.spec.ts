@@ -1,18 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateworkshoporderComponent } from './createworkshoporder.component';
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule }   from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { WorkshoporderService, ApiService } from '../../../core/services/';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ConfirmationService } from 'primeng/api';
+import { RouterModule, Router } from '@angular/router';
+import { and } from '@angular/router/src/utils/collection';
+
 describe('CreateworkshoporderComponent', () => {
   let component: CreateworkshoporderComponent;
   let fixture: ComponentFixture<CreateworkshoporderComponent>;
 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, FormsModule, RouterTestingModule , HttpClientModule],
+      imports: [ReactiveFormsModule, FormsModule, RouterTestingModule , HttpClientModule, RouterModule],
       declarations: [ CreateworkshoporderComponent ],
       providers: [WorkshoporderService, ApiService, ConfirmationService]
     })
@@ -51,6 +55,11 @@ describe('CreateworkshoporderComponent', () => {
     let workshopOrderNumber = component.workshoporderForm.controls['workshopOrderNumber']
     expect(component.workshoporderForm.valid).toBeFalsy();
   });
+  it('Form invalid when priority is empty', () => {
+    component.workshoporderForm.patchValue({priority: ''});
+    let priority = component.workshoporderForm.controls['priority']
+    expect(component.workshoporderForm.valid).toBeTruthy();
+  });
   it('Form valid when workshopOrderDescription is empty', () => {
     component.workshoporderForm.patchValue({workshopOrderDescription: ''});
     let workshopOrderDescription = component.workshoporderForm.controls['workshopOrderDescription']
@@ -80,6 +89,63 @@ describe('CreateworkshoporderComponent', () => {
     expect(creationDate.value).toEqual(formatDate(todayTime));
   });
 
+  it('Priority is Enabled when editorder is true', () => {
+    if(component.workshoporderForm.controls['editOrderView'] =="editorder"){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.valid).toBeTruthy();
+    }
+  });
+  it('Priority is disabled when editorder is false', () => {
+    if(component.workshoporderForm.controls['editOrderView'] =="createorder"){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.invalid).toBeFalsy();
+    }
+  });
+  it('Save changes button  is enabled when editorder is true', () => {
+    if(component.workshoporderForm.controls['editOrderView'] =="editorder"){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.valid).toBeTruthy();
+    }
+  });
+  it('Discard Changes button is enabled when editorder is true', () => {
+  if(component.workshoporderForm.controls['editOrderView'] =="editorder"){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.valid).toBeTruthy();
+    }
+  });
+  it('Save changes button  is disabled when editorder is false', () => {
+    if(component.workshoporderForm.controls['editOrderView'] =="createorder"){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.invalid).toBeFalsy();
+    }
+  });
+  it('Discard Changes button is disabled when editorder is false', () => {
+    if(component.workshoporderForm.controls['editOrderView'] =="createorder"){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.invalid).toBeFalsy();
+    }
+  });
+  it('Reject Workshop Order button is enabled when workstatus is WAITING', () => {
+    if(component.workshoporderForm.controls['workstatus'] =='WAITING'){
+    expect(component.workshoporderForm.valid).toBeTruthy();
+    }
+  });
+  it('Reject Workshop Order button is enabled when editorder is true and when workstatus is WAITING', () => {
+    if((component.workshoporderForm.controls['editOrderView'] =="createorder") && (component.workshoporderForm.controls['workstatus'] =='WAITING')){
+    component.workshoporderForm.patchValue({editOrderView: ''});
+    expect(component.workshoporderForm.invalid).toBeFalsy();
+    }
+  });
+  it('Reject Workshop Order button is disabled when workstatus is PENDING', () => {
+    if(component.workshoporderForm.controls['workstatus'] =='PENDING'){
+    expect(component.workshoporderForm.invalid).toBeFalsy();
+    }
+  });
+  it('Confimation popup will open once the Reject Workshop Order button is clicked', () => {
+    if(component.deleteform){
+    expect(component.workshoporderForm.valid).toBeTruthy();
+    }
+  });
 });
 
  

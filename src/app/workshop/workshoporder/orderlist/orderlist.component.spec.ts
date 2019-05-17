@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick, } from '@angular/cor
 import { OrderlistComponent } from './orderlist.component';
 import { TableModule } from 'primeng/table';
 import { RouterModule } from '@angular/router';
-import { WorkshoporderService, ApiService } from '../../../core/services/';
+import { WorkshoporderService, ApiService, EditworkshoporderService } from '../../../core/services/';
 import { throwError } from 'rxjs';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -20,7 +20,7 @@ describe('OrderlistComponent', () => {
     TestBed.configureTestingModule({
       declarations: [OrderlistComponent],
       imports: [TableModule, RouterModule, HttpClientModule, RouterTestingModule],
-      providers: [WorkshoporderService, ApiService]
+      providers: [WorkshoporderService, ApiService, EditworkshoporderService]
     }).compileComponents();
   }));
 
@@ -60,7 +60,7 @@ describe('OrderlistComponent', () => {
 
 
 
-  it('should set Truck data  with the items returned from the server', () => {
+  it('should set Truck data  with the items returned from the server', () => {  
     // Arrange - Setup
     const trucks = [
       {

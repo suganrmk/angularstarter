@@ -27,10 +27,38 @@ export class EditworkshoporderService {
     shipToPartyNo: "29804",
     sortingOrder: "ASC",
     workStatus: "WAITING"
-  } 
+  }  
   return this.apiService.post(api.getworkshoporderlists, body, options)
     .pipe(map(data => data));
   }
+
+  
+  getInprogressList() {
+    const options = { headers: headers };
+      const body = {
+      shipToPartyNo: "29804",
+      sortingOrder: "ASC",
+      workStatus: "INPROGRESS"
+    }  
+    return this.apiService.post(api.getworkshoporderlists, body, options)
+      .pipe(map(data => data));
+    }
+
+
+    // create/update work order
+    updateWorkstatus(data , slotnumber: number): Observable<[string]> {  
+      let body = {
+        "assignedSlot":slotnumber,
+        "workStatus": "INPROGRESS"
+      }
+      console.log(data , data.serialNumber)
+      let paramObj = { serialNumber: data.serialNumber, shipToPartyNo: data.shipToPartyNo };
+      const options = { headers, params: paramObj };       
+
+      return this.apiService.post( api.updateorder, body, options).pipe(map(data => data));
+    }
+
+
 
   
 }

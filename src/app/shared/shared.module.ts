@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { ToastModule } from 'primeng/toast';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -32,6 +34,7 @@ import { ToastModule } from 'primeng/toast';
     TableModule, 
     DialogModule, 
     ToastModule,
+    DragDropModule
   ],
   providers:[]
 })

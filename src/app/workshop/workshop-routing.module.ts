@@ -8,7 +8,8 @@ const routes: Routes = [
      children: [
       { path: '', loadChildren: './workshoporder/workshoporder.module#WorkshoporderModule' },
       { path: 'edit', loadChildren: './editworkshop/editworkshop.module#EditworkshopModule' }, 
-
+      { path: 'archive', loadChildren: './archives/archives.module#ArchivesModule' },
+      { path: 'settings', loadChildren: './settings/settings.module#SettingsModule' },
     ]
   }
 ]; 
