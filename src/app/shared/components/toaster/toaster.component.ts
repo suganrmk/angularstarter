@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from '../../../core/services/interaction.service';
+import { ToasterService } from '../../../core/services';
 import { ActivatedRoute } from "@angular/router"; 
 import { bind } from '@angular/core/src/render3';
 
 @Component({
   selector: 'toaster',
   templateUrl: './toaster.component.html',
-  styleUrls: ['./toaster.component.css']
+  styleUrls: ['./toaster.component.scss']
 })
 export class ToasterComponent implements OnInit {
 
-  display: boolean  = false;
+  
 
-  constructor(private interactionService: InteractionService,) {}
+  toasterData: string;
+
+  constructor(private _toasterService: ToasterService) {}
 
   ngOnInit() { 
     var that = this;
-    this.interactionService.display$.subscribe(res => {
-      console.log(res)
-      this.display = res
-      setTimeout(function(){that.display=true;}, 3000)
+    this._toasterService.content$.subscribe(res => { 
+      this.toasterData = res; 
+      setTimeout(function(){that.toasterData= null;}, 10000)
   });
 
   }
+ 
+  dismiss(){
+     this.toasterData = null;
+}
   
 
 }
