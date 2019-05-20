@@ -11,24 +11,27 @@ import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { ToastModule } from 'primeng/toast';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ToasterComponent } from '../../app/shared/components/toaster/toaster.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    ToasterComponent
   ],
   imports: [
     CommonModule, 
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule 
   ],
   exports: [
     FormsModule,
     HeaderComponent,
     SidebarComponent,
+    ToasterComponent,
     FooterComponent,
     ReactiveFormsModule,
     TableModule, 
