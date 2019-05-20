@@ -8,6 +8,8 @@ import { Iworkorder } from '../../../core/models/workshop'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../shared/directives/validator';
 import { Location } from '@angular/common';
+import { InteractionService } from '../../../core/services/interaction.service';
+
 @Component({
   selector: 'app-createworkshoporder',
   templateUrl: './createworkshoporder.component.html',
@@ -25,7 +27,8 @@ export class CreateworkshoporderComponent implements OnInit {
     private _confirmationService: ConfirmationService,
     private _renderer: Renderer2,
     private _location: Location,
-    private _router: Router) { }
+    private _router: Router,
+    private _interactionService: InteractionService) { }
 
   ngOnInit() {
     this._route.paramMap.subscribe(params => {
@@ -46,9 +49,9 @@ export class CreateworkshoporderComponent implements OnInit {
   createworkshoporderForm() {
 
     this.setFormdata();
-    this._workshoporderService.getWorkordernumber(this.paramObj).subscribe(workOrderNumber => {
-      this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber })
-    });
+    // this._workshoporderService.getWorkordernumber(this.paramObj).subscribe(workOrderNumber => {
+    //   this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber })
+    // });
   }
 
   updateworkshoporderForm() {
@@ -66,6 +69,8 @@ export class CreateworkshoporderComponent implements OnInit {
         workStatus: new FormControl(formdata.workStatus),
         outOfOrder: new FormControl(formdata.outOfOrder),
         priority: new FormControl(formdata.priority),
+        serialNumber: new FormControl(this.paramObj.serialNumber),
+        shipToPartyNo: new FormControl(this.paramObj.shipToPartyNo)
       });
     })
   }
@@ -75,18 +80,21 @@ export class CreateworkshoporderComponent implements OnInit {
       author: new FormControl('Test User', [Validators.required]),
       reporter: new FormControl('Test User', [Validators.required, CustomValidators.nowhitespace]),
       creationDate: new FormControl(formatDate(new Date(), 'dd.MM.yyyy', 'en')),
-      workshopOrderNumber: new FormControl(null),
       workshopOrderDescription: new FormControl(''),
       workStatus: new FormControl('WAITING'),
-      outOfOrder: new FormControl(false)
+      outOfOrder: new FormControl(false),
+      serialNumber: new FormControl(this.paramObj.serialNumber),
+      shipToPartyNo: new FormControl(this.paramObj.shipToPartyNo)
     });
   }
 
 
   submitform(editOrder) { 
-    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(res => { 
+    this._interactionService.setdisplay(true);
+    this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(workOrderNumber => { 
+      this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber })
       let sucesstext = editOrder ? 'updated':'created';
-      if (res) {
+      if (workOrderNumber) {
         this._location.back();
       }
     });
@@ -113,4 +121,5 @@ export class CreateworkshoporderComponent implements OnInit {
   ngOnDestroy() {
     this._renderer.removeClass(document.body, 'hidesidebar');
   }
+  
 }
