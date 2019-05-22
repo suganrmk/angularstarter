@@ -79,9 +79,14 @@ $slotheader: #fafafa;
     flex: 0 0 100%;
     margin: 0px 0;
     padding: 5px 10px 5px 25px;
+    float: left;
+    width: 100%;
     flex-flow: row-reverse wrap;
     cursor: pointer;
     display: flex;
+    &:last-child{
+      margin-bottom: 20px;
+    }
     &:hover , &.active{
       background: #fff7f3;
     }
@@ -192,11 +197,12 @@ $slotheader: #fafafa;
     // overflow: visible;
   }
   .editworkshop--content{
-    height: 100%;
+    height: auto;
   }
 
   .editworkshop--body { 
-    height: calc(100% - 83px); 
+    height: calc(100% - 127px); 
+    padding: 0;
   }
   .waitingList--left__skew {
     left: 0;
@@ -229,8 +235,8 @@ $slotheader: #fafafa;
 .inprogressList {
   display: inline-block;
   width: 100%;
-  padding: 37px 15px;
-
+  padding: 37px 15px 0px 15px;
+ 
   > li {
     float: left;
     width: calc(50% - 10px);
