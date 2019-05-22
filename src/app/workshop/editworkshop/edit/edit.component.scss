@@ -17,7 +17,6 @@ $slotheader: #fafafa;
   .editworkshop--header {
     padding: 25px 15px 10px 15px;
     border-bottom: 1px solid $border;
-
     .headline {
       font-weight: 500;
       font-size: 20px;
@@ -52,6 +51,7 @@ $slotheader: #fafafa;
 .editworkshop--body {
   height: 100%;
   overflow: auto;
+  padding: 0 0 44px  0;
   .table {
     thead th {
       border-top: none;
@@ -82,8 +82,13 @@ $slotheader: #fafafa;
     flex-flow: row-reverse wrap;
     cursor: pointer;
     display: flex;
-    &:hover {
+    &:hover , &.active{
       background: #fff7f3;
+    }
+    &.active{
+      .waitingList--container{
+        border-color: #ff6700;
+      }
     }
 
     .waitingList--container {
@@ -116,7 +121,6 @@ $slotheader: #fafafa;
   position: relative;
   text-align: left;
   padding: 15px 0 0 50px;
-
   > * {
     -webkit-transform: skew(35deg);
     transform: skew(35deg);
@@ -192,7 +196,7 @@ $slotheader: #fafafa;
   }
 
   .editworkshop--body { 
-    height: calc(100% - 83px);
+    height: calc(100% - 83px); 
   }
   .waitingList--left__skew {
     left: 0;
@@ -277,7 +281,6 @@ slot {
   display: flex;
   background: $bgLight;
   box-shadow: none;
-
 }
 .slot--header {
   float: left;
@@ -326,9 +329,9 @@ label.cotrl {
     padding: 4px 4px;
     margin: 0 0 0 5px;
     &.bordered{
-      border: 1px solid #ccc;
-      border-radius: 3px;
-  }
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
   }
 }
 
@@ -342,6 +345,5 @@ label.cotrl {
   }
   .assignslot--label{
     display: block;
-
   }
 }

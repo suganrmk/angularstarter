@@ -12,9 +12,9 @@ export class EditComponent implements OnInit {
   existingSlots: any[] = [];
   selectedOrder: any = null;
   totalSlot: number = 6;
-  
 
-  constructor( private _editworkshoporderService: EditworkshoporderService) { }
+
+  constructor(private _editworkshoporderService: EditworkshoporderService) { }
 
   ngOnInit() {
     this._editworkshoporderService.getWaitingList().subscribe(data => {
@@ -37,10 +37,11 @@ export class EditComponent implements OnInit {
         "freeSlot": true
       }
       this.existingSlots.indexOf(i + 1) < 0 ? this.inprogressList.push(freeSlot) : this.inprogressList.push(data[this.existingSlots.indexOf((i + 1))]);
-    }); 
+    });
   }
 
-  selectorder(waitingindex) {
+  selectorder(waitingindex, event) {
+    event.stopPropagation()
     this.selectedOrder = waitingindex;
   }
 

@@ -20,8 +20,10 @@
       </table>
       <div class="editworkshop--content">
         <ul class="waitingList">
-          <li   *ngFor="let order of waitingList; index as i;  trackBy: trackByFn" >
-            <div  routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}"  class="waitingList--container">
+          <li  [class.active]="selectedOrder == i"   *ngFor="let order of waitingList; index as i;  trackBy: trackByFn" >
+            <div  routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}"
+            
+            class="waitingList--container">
               <div class="waitingList--left__skew">
                 <figure>
                   <img src="assets/images/e_rx_60_35_m.png">
@@ -36,10 +38,10 @@
                 </div>
                 <div class="waitingList--right--bottom">
                   <span><i class="icon icon-disclosureright"></i>Controls</span>
-                  <!-- <div class="waitingList--action--icon hide"> 
-                    <i (click)="selectorder(i)" class="icon icon-redo"></i>
+                  <div class="waitingList--action--icon  "> 
+                    <i (click)="selectorder(i, $event)" class="icon icon-redo"></i>
                     <i class="icon icon-key"></i>
-                  </div> -->
+                  </div>
 
                 </div>
               </div>
