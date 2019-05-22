@@ -10,6 +10,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService} from 'primeng/api';
 import { Routes, RouterModule } from '@angular/router';
+import { ToasterComponent } from '../../shared/components/toaster/toaster.component'
 
 describe('LandingComponent', () => {
   let component: LandingComponent;
@@ -18,7 +19,7 @@ describe('LandingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingComponent,HeaderComponent, SidebarComponent, FooterComponent ],
+      declarations: [ LandingComponent,HeaderComponent, SidebarComponent, FooterComponent, ToasterComponent ],
       imports: [
         BrowserModule,
         HttpClientModule,
