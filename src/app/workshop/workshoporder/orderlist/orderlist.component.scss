@@ -29,13 +29,14 @@
         @include regular();
         position: -webkit-sticky;
         position: sticky;
-        border: none;
-        top: 0;
-        box-shadow: 0 0 0 1px #dadada;
+        border:1px solid #dadada;
+        border-top: none;
+        border-left:none;
         background: #fff;
         vertical-align: middle;
         height:35px;
         text-align: left;
+        &:last-child{border-right:none}
       }
   }
 
