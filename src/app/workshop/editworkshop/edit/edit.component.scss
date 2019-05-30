@@ -178,11 +178,11 @@ $slotheader: #fafafa;
 .priorityval {
   float: right;
   border: 1px solid #969696;
-  padding: 1px 5px;
+  padding: 1px 0px;
   border-radius: 3px;
   height: 17px;
   width: 17px;
-
+  text-align: center;
 }
 
 .waitingList--right--bottom {
