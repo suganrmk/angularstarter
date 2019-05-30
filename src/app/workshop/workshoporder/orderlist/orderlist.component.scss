@@ -3,17 +3,18 @@
 
  
   
-  button {
-    background: #fff;
-    border: none;
-    color: $fontR;
-    border: 1px solid #e6e6e6;
-    padding: 7px 11px; 
-    margin: 0 5px;
-    border-radius: 1px;
-    box-shadow: 0 0 2px 0px #eae7e7; 
-    white-space: nowrap;
-    flex: 1;
+button {
+//     background: #fff;
+//     border: none;
+//     color: $fontR;
+//     border: 1px solid #e6e6e6;
+//     padding: 7px 11px; 
+//     margin: 0 20px 0 0px;
+//     border-radius: 1px;
+//     box-shadow: 0 0 2px 0px #eae7e7; 
+//     white-space: nowrap;
+//     flex: 1;
+//     font-size: 14px;
 }
 
 
@@ -46,7 +47,8 @@
         font-size: 14px; 
         @include regular();
         height: 50px;
-        padding: 0 8px;
+        // padding: 0 8px;
+        margin: 0 0 0 0;
         vertical-align: middle;
         border-bottom: 1px solid #f2f2f2;
     }
@@ -58,7 +60,6 @@
 }
 
 .tablebtnHolder{
-  display: flex;
-  justify-content: space-between;
-  margin: 0 -5px;
+  float: right;
+  margin:0 20px 0 0;
 }
