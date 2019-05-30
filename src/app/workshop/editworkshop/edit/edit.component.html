@@ -34,7 +34,7 @@
                 <div class="waitingList--right--top">
                   <span class="orderNumber">Order {{order.workshopOrderNumber}}</span>
                   <span class="orderdate">{{order.createdDate | date : 'dd.MM.yyyy'}}</span>
-                  <span class="priorityval">{{order.priority}}</span>
+                  <span class="priorityval"><ng-container *ngIf="order.priority">{{order.priority}}</ng-container></span>
                 </div>
                 <div class="waitingList--right--bottom">
                   <span><i class="icon icon-disclosureright"></i>Controls</span>
@@ -79,7 +79,7 @@
                   </div>
                   <div class="inprogress--right">
                     <i  class="icon icon-config"></i>
-                    <span class="pirority--num priorityval">{{order.priority}}</span>
+                    <span class="pirority--num priorityval"><ng-container *ngIf="order.priority">{{order.priority}}</ng-container></span>
                   </div>
                 </div>
                 <div class="slot--body">
