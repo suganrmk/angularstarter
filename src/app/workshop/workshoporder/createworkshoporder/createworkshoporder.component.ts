@@ -57,7 +57,7 @@ export class CreateworkshoporderComponent implements OnInit {
         priority: new FormControl(formdata.priority),
         serialNumber: new FormControl(this.paramObj.serialNumber),
         shipToPartyNo: new FormControl(this.paramObj.shipToPartyNo),
-        operatinghours:new FormControl(formdata.operatinghours),
+        operatinghours:new FormControl(formdata.operatinghours,[Validators.pattern("^[0-9]*$")]),
         repairDescription:new FormControl(formdata.repairDescription),
       });
     })
@@ -72,9 +72,7 @@ export class CreateworkshoporderComponent implements OnInit {
       workStatus: new FormControl('WAITING'),
       outOfOrder: new FormControl(false),
       serialNumber: new FormControl(this.paramObj.serialNumber),
-      shipToPartyNo: new FormControl(this.paramObj.shipToPartyNo),
-      operatinghours:new FormControl(),
-      repairDescription:new FormControl(''),
+      shipToPartyNo: new FormControl(this.paramObj.shipToPartyNo)
     });
   }
 
