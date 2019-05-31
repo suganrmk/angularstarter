@@ -30,7 +30,7 @@
         <span>{{workshoporderForm.controls.creationDate.value}}</span>
       </div>
       <div class="form-group" *ngIf="editOrderView">
-        <label >Number:</label>
+        <label>Number:</label>
         <span>{{workshoporderForm.controls.workshopOrderNumber.value}}</span>
       </div>
       <div class="form-group" *ngIf="editOrderView">
@@ -45,6 +45,8 @@
           <label for="1">1</label>
         </div>
       </div>
+
+      <h5 class="formSeperator">Details</h5>
       <div class="form-group">
         <label>Workshop order description:</label>
         <textarea id="workshopOrderDescription" cols="60" rows="8" maxlength="2000"
@@ -59,11 +61,13 @@
           class="btn tmeBtn">Create</button>
         <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Cancel</button>
       </div>
-      <div class="form-group buttonholder" *ngIf="editOrderView"> 
-        <button [disabled]="!workshoporderForm.valid || workshoporderForm.controls.workStatus.value === 'INPROGRESS'" (click)="submitform(editOrderView)" class="btn tmeBtn">Save
+      <div class="form-group buttonholder" *ngIf="editOrderView">
+        <button [disabled]="!workshoporderForm.valid || workshoporderForm.controls.workStatus.value === 'INPROGRESS'"
+          (click)="submitform(editOrderView)" class="btn tmeBtn">Save
           Changes</button>
-        <button type="button" class="btn cnl" (click)="discard()">Discard Changes</button> 
-        <button *ngIf="workshoporderForm.controls.workStatus.value === 'WAITING'" type="button" class="btn del" (click)="deleteform()">Reject Workshop Order</button>
+        <button type="button" class="btn cnl" (click)="discard()">Discard Changes</button>
+        <button *ngIf="workshoporderForm.controls.workStatus.value === 'WAITING'" type="button" class="btn del"
+          (click)="deleteform()">Reject Workshop Order</button>
       </div>
     </div>
   </form>

@@ -20,8 +20,9 @@
       </table>
       <div class="editworkshop--content">
         <ul class="waitingList">
-          <li  [class.active]="selectedOrder == i"   *ngFor="let order of waitingList; index as i;  trackBy: trackByFn" >
-            <div  routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}"
+          <li cdkDrag  [class.active]="selectedOrder == i"   *ngFor="let order of waitingList; index as i;  trackBy: trackByFn" >
+           <!--  routerLink="/editorder/{{order.truckName}}/{{order.serialNumber}}/{{order.shipToPartyNo}}" -->
+            <div  
             
             class="waitingList--container">
               <div class="waitingList--left__skew">
@@ -97,7 +98,7 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="order.freeSlot" (click)="updateSlot(i)" class="slot--container slot--free">
+              <div *ngIf="order.freeSlot"   (click)="updateSlot(i)" class="slot--container slot--free">
                 <span class="freeslot--label"> Free Slot</span>
                 <span class="assignslot--label">
                   <i class="icon icon-archive"></i>
