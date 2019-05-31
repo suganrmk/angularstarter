@@ -44,7 +44,7 @@
       border: 1px solid #ccc;
       padding: 9px 10px;
     }
-    textarea#workshopOrderDescription {
+    textarea#workshopOrderDescription,#repairDescription {
       resize: none;
       font-size: 14px;
       @include regular();
@@ -52,7 +52,7 @@
       width: 68%;
     }
 
-    textarea#workshopOrderDescription:focus {
+    textarea#workshopOrderDescription,#repairDescription:focus {
       outline-color: #ff6700;
     }
 
