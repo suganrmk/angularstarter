@@ -3,7 +3,7 @@
     <tr>
       <th style="width:140px">Name</th>
       <th>Serial No.</th>
-      <th style="width: 360px">Action <i class="icon icon-tablestrong tablefiltericon"></i></th>
+      <th style="width: 192px">Action <i class="icon icon-tablestrong tablefiltericon"></i></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-truck>
@@ -17,7 +17,7 @@
             [routerLink]="['/createorder/',truck.truckName,truck.serialNumber, truck.shipToPartyNo]">
             Create Workshop order
           </button>
-          <button>Create Service Report</button>
+          <!-- <button>Create Service Report</button> -->
         </div>
       </td>
     </tr>

@@ -19,10 +19,12 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this._editworkshoporderService.getWaitingList().subscribe(data => {
       this.waitingList = data;
+      console.dir(data);
     })
 
     this._editworkshoporderService.getInprogressList().subscribe(data => {
       this.setttingSlot(data);
+      console.log(data);
     })
   }
 
