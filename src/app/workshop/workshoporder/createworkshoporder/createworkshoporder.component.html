@@ -2,7 +2,7 @@
   <div class="containerspace">
     <div class="truckDetailSection">
       <div class="leftTruckimg">
-        <img src="assets/images/e_rx_60_35_m.png">
+        <img style="margin: 0 0 0 -5px;" src="assets/images/e_rx_60_35_m.png">
       </div>
       <div class="RightTruckDetail">
         <label class="truckname">{{workshoporderForm?.controls.truckName.value}}</label>
@@ -50,10 +50,10 @@
 
       
       <div class="form-group" *ngIf = "workshoporderForm.controls.workStatus.value === 'INPROGRESS'">
-      <label>Truck Operating Hours:</label>
-      <input id="operatinghours" formControlName="operatinghours" type="text" />
-      </div> 
-      <div class="form-group alignTop" >
+        <label>Truck Operating Hours:</label>
+        <input id="operatingHours" formControlName="operatingHours"  type="text" appIntergerValidation/>
+        </div> 
+      <div class="form-group alignTop">
         <label>Workshop order description:</label>
         <textarea id="workshopOrderDescription" cols="60" rows="8" maxlength="2000"
           formControlName="workshopOrderDescription" placeholder="Please enter a short description here"></textarea>
@@ -69,15 +69,15 @@
       </div>
       <div class="form-group stackbutton" *ngIf="!editOrderView">
         <button [disabled]="!workshoporderForm.valid" (click)="submitform(editOrderView)"
-          class="btn tmeBtn">Create</button>
-        <button type="button" class="btn cnl" [routerLink]="['/trucklist/']">Cancel</button>
+          class="text-button">Create</button>
+        <button type="button" class="text-button" [routerLink]="['/trucklist/']">Cancel</button>
       </div>
       <div class="form-group stackbutton" *ngIf="editOrderView"> 
-        <button [disabled]="!workshoporderForm.valid" (click)="submitform(editOrderView)" class="text-button text-button--call-to-action">Save
+        <button [disabled]="!workshoporderForm.controls.reporter.valid" (click)="submitform(editOrderView)" class="text-button text-button--call-to-action">Save
           Changes</button>
+        <button [disabled]="!workshoporderForm.controls.operatingHours.valid || !workshoporderForm.controls.repairDescription.valid" (click)="submitform(editOrderView)" class="btn tmeBtn" *ngIf="workshoporderForm.controls.workStatus.value === 'INPROGRESS'">Finalize Workshop Order</button>
         <button type="button" class="text-button" (click)="discard()">Discard Changes</button>
-        <button *ngIf="workshoporderForm.controls.workStatus.value === 'WAITING'" type="button" class="text-button"
-          (click)="deleteform()">Reject Workshop Order</button>
+        <button *ngIf="workshoporderForm.controls.workStatus.value === 'WAITING'" type="button" class="text-button" (click)="deleteform()">Reject Workshop Order</button>
       </div>
     </div>
   </form>

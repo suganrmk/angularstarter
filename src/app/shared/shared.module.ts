@@ -12,13 +12,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ToasterComponent } from '../../app/shared/components/toaster/toaster.component';
+import { IntergerValidationDirective } from './directives/interger-validation.directive';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    ToasterComponent
+    ToasterComponent,
+    IntergerValidationDirective
   ],
   imports: [
     CommonModule, 
@@ -37,7 +39,8 @@ import { ToasterComponent } from '../../app/shared/components/toaster/toaster.co
     TableModule, 
     DialogModule, 
     ToastModule,
-    DragDropModule
+    DragDropModule,
+    IntergerValidationDirective
   ],
   providers:[]
 })
