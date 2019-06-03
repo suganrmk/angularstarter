@@ -80,7 +80,9 @@ export class CreateworkshoporderComponent implements OnInit {
   submitform(editOrder) { 
     this._workshoporderService.createorder(this.workshoporderForm.value, this.paramObj, editOrder).subscribe(workOrderNumber => { 
       this.workshoporderForm.patchValue({ workshopOrderNumber: workOrderNumber })    
-      this._toasterService.setContent( 'Workshop order  ' +  workOrderNumber['workOrderNumber'] + '  created successfully ');
+      if(!editOrder) {
+        this._toasterService.setContent( 'Workshop order  ' +  workOrderNumber['workOrderNumber'] + '  created successfully ');
+      }
       if (workOrderNumber) { 
         this._location.back();
       }
