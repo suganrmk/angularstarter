@@ -33,7 +33,7 @@
       line-height: 17px;
     }
 
-    span {
+    > span {
       font-weight: bold;
       font-size: 14px;
       float: left;
@@ -44,34 +44,21 @@
       margin-top: 30px;
     }
 
-    input[type="text"] {
-      border: 1px solid #ccc;
-      padding: 9px 10px;
+    input[type="text"] { 
       width: 180px;
     }
 
     textarea#description {
-      border: 1px solid #ccc;
+      border: 1px solid $Slate_Grey;
       padding: 9px 10px;
     }
     textarea#workshopOrderDescription,
-    #repairDescription {
-      resize: none;
-      font-size: 14px;
-      @include regular();
-      padding: 10px;
+    #repairDescription {    
       width: 680px;
       min-height: 134px;
     }
 
-    textarea#workshopOrderDescription,
-    #repairDescription:focus {
-      outline-color: #ff6700;
-    }
-
-    input[type="text"] {
-      outline-color: #ff6700;
-    }
+        
     &.alignTop {
       align-items: flex-start;
     }
@@ -118,7 +105,7 @@
 .truckdetail {
   float: left;
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $Slate_Grey;
 }
 
 .truckDetailSection {
@@ -146,7 +133,7 @@
   position: relative;
   width: 370px;
   display: flex;
-  border: 1px solid #ccc;
+  border: 1px solid $Slate_Grey;
   > input {
     opacity: 0;
     position: absolute;
@@ -159,7 +146,7 @@
     flex: 1;
     text-align: center;
     padding: 9px 0;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid $Slate_Grey;
     cursor: pointer;
     &:last-child {
       border: none;
@@ -175,4 +162,5 @@
   box-shadow: 0 0 0px 1px red;
 }
 
+ 
 /// need to remove
