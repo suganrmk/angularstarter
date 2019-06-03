@@ -1,14 +1,14 @@
 .textbtn {
   background-color: #ffffff;
-  border: 1px solid #dadada ;
+  border: 1px solid $Slate_Grey;
   border-radius: 1px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  @include ShadowM;
   @include regular;
   font-weight: 400;
   color: $Anthracite;
   height: 35px;
-  padding:0 10px 0 10px;
-  &:hover {
+  padding: 0 10px 0 10px;
+  &:focus {
     border-color: $theme;
   }
   &:active {
@@ -16,5 +16,11 @@
     color: #ffffff;
     border-color: none;
     outline: none;
+  }
+}
+
+.stackbutton {
+  .textbtn {
+    margin-right: 20px;
   }
 }

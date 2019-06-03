@@ -4,24 +4,33 @@
 .containerspace {
   float: left;
   width: 100%;
-  padding: 10px 45px;
+  padding: 0px 20px 10px 20px;
   box-sizing: border-box;
 }
 
 .workorderform {
   float: left;
-  width: 50%;
+  width: 65%;
   font-size: 14px;
+  margin-bottom: 30px;
 
   .form-group {
-    margin: 20px 0;
-    min-height: 30px;
+    margin: 0 0 6px 0;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+
+    &.stackbutton {
+      margin: 20px 0 0 0;
+    }
 
     > label {
       float: left;
-      width: 30%;
+      width: 160px;
+      margin: 0 10px 0 0;
       font-size: 14px;
-      color: #535353;
+      color: $Anthracite;
+      line-height: 17px;
     }
 
     span {
@@ -38,21 +47,25 @@
     input[type="text"] {
       border: 1px solid #ccc;
       padding: 9px 10px;
+      width: 180px;
     }
 
     textarea#description {
       border: 1px solid #ccc;
       padding: 9px 10px;
     }
-    textarea#workshopOrderDescription,#repairDescription {
+    textarea#workshopOrderDescription,
+    #repairDescription {
       resize: none;
       font-size: 14px;
       @include regular();
       padding: 10px;
-      width: 68%;
+      width: 680px;
+      min-height: 134px;
     }
 
-    textarea#workshopOrderDescription,#repairDescription:focus {
+    textarea#workshopOrderDescription,
+    #repairDescription:focus {
       outline-color: #ff6700;
     }
 
@@ -60,6 +73,21 @@
       outline-color: #ff6700;
     }
   }
+  &.alignTop {
+    align-items: flex-start;
+  }
+}
+
+.formSeperator {
+  border-bottom: 1px solid $Slate_Grey;
+  margin: 35px 0 35px 0;
+  padding: 0 0 10px 0;
+  font-weight: 500;
+  font-size: 16px;
+  min-width: 630px;
+  // max-width: 735px;
+  height: 35px;
+  padding: 5px 0 0 0;
 }
 
 button.btn {
@@ -84,7 +112,7 @@ button.btn {
 .orderTitle {
   font-size: 20px;
   font-weight: bold;
-  margin: 20px 0 10px 0;
+  margin: 20px 0 35px 0;
 }
 
 .truckdetail {
@@ -114,18 +142,17 @@ button.btn {
 }
 
 .radiogroupBtn {
-    float: left;
-    position: relative;
-    width: 67.7%;
-    display: flex;
-    border: 1px solid #ccc;
-    margin: -10px 0 0 0;
+  float: left;
+  position: relative;
+  width: 67.7%;
+  display: flex;
+  border: 1px solid #ccc;
   > input {
     opacity: 0;
     position: absolute;
     z-index: -2;
-    &:checked + label{ 
-        color: #ff6700;
+    &:checked + label {
+      color: #ff6700;
     }
   }
   > label {
@@ -134,8 +161,8 @@ button.btn {
     padding: 9px 0;
     border-right: 1px solid #ccc;
     cursor: pointer;
-    &:last-child{
-        border:none;
+    &:last-child {
+      border: none;
     }
   }
 }
