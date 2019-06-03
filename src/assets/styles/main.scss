@@ -1,4 +1,5 @@
 
+@import "globals/globals";
 @import 'abstracts/mixins';
 @import 'abstracts/variable';
 
@@ -8,6 +9,6 @@
 @import 'base/STILLIconFont';
 
 
-@import 'components/button';
+@import 'components/component-base';
 @import 'components/toaster';
 @import 'layout/body';
